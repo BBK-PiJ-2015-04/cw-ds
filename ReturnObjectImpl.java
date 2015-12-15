@@ -1,5 +1,7 @@
 public class ReturnObjectImpl implements ReturnObject {
 	
+	// Under construction
+	
 	public boolean hasError() {
 		return false;
 	}
