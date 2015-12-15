@@ -24,8 +24,8 @@ public class Test {
 		System.out.println(john.isEmpty());
 		System.out.println(john.size());
 		
-		john.get(6);
-		john.remove(6);
+		john.get(7);
+		john.remove(1);
 		john.PrintList();
 		
 	}
