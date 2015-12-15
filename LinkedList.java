@@ -1,13 +1,18 @@
-public class LinkedList implements List {
+public class LinkedList /*implements List*/ {
 	
-	private static int indx = -1;
-	private static LinkedList startList = null;
-	
-	private Object obj;
+	private String obj;
 	private LinkedList next;
 	
+	LinkedList() {
+		obj = null;
+		next = null;
+	}
 	
-	@Override
+	private static int indx = -1;
+	private static LinkedList startList = new LinkedList();
+	
+	
+	//@Override
 	public boolean isEmpty() {
 		if(indx == -1) {
 			return false;
@@ -17,43 +22,68 @@ public class LinkedList implements List {
 		}
 	}
 
-	@Override
+	//@Override
 	public int size() {
 		return indx;
 	}
 
-	@Override
+	//@Override
 	public ReturnObject get(int index) {
 		return null;
 	}
 
-	@Override
+	//@Override
 	public ReturnObject remove(int index) {
 		return null;
 	}
 
-	@Override
+	//@Override
 	public ReturnObject add(int index, Object item) {
 		return null;
 	}
 
-	@Override
-	public ReturnObject add(Object item) {
-		if(indx == -1) {
-			indx = 0;
+	//@Override
+	public ReturnObject add(String item) {
+		if(startList.obj == null) {
 			startList.obj = item;
-			startList.next = null;
+			indx++;
+			//System.out.println(indx);
 		}
 		else {
-			LinkedList current = startList;
-			while (current.next != null) {
-				current = current.next;
+			if(startList.next == null) {
+				//System.out.println(startList.obj);
+				//System.out.println(item);
+				startList.next = new LinkedList();
+				startList.next.obj = item;
+				//System.out.println(startList.next.obj);
 				indx++;
 			}
-			current.next.obj = item;
-			current.next.next = null;
+			else {
+				LinkedList current = startList;
+				while (current.next != null) {
+					current = current.next;
+				}
+				//System.out.println(indx);
+				//System.out.println(current.obj);
+				current.next = new LinkedList();
+				current.next.obj = item;
+				indx++;
+			}
 		}
 		return null;
+	}
+	
+	public void PrintList() {
+		
+		LinkedList current = startList;
+		while(current.next != null) {
+			System.out.println(current.obj);
+			current = current.next;
+
+		}
+		System.out.println(current.obj);
+		System.out.println(indx);
+		
 	}
 	
 }
