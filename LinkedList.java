@@ -15,25 +15,38 @@ public class LinkedList /*implements List*/ {
 	//@Override
 	public boolean isEmpty() {
 		if(indx == -1) {
-			return false;
+			return true;
 		}
 		else {
-			return true;
+			return false;
 		}
 	}
 
 	//@Override
 	public int size() {
-		return indx;
+		return indx + 1;
 	}
 
 	//@Override
 	public ReturnObject get(int index) {
+		LinkedList current = startList;
+		for(int i = 0; i < index; i++) {
+			current = current.next;
+		}
+		System.out.println(current.obj);
+		
 		return null;
 	}
 
 	//@Override
 	public ReturnObject remove(int index) {
+		LinkedList current = startList;
+		for(int i = 0; i < (index - 1); i++) {
+			current = current.next;
+		}
+		System.out.println(current.next.obj + " is history!");
+		current.next = current.next.next;
+		indx--;
 		return null;
 	}
 

@@ -7,13 +7,25 @@ public class Test {
 		Object peter = new Object();
 		Object david = new Object();
 		
-		System.out.println(peter);
+		System.out.println(john.isEmpty());
+		System.out.println(john.size());
 		
 		john.add("peter");
 		john.add("david");
 		john.add("Mike3");
 		john.add("Mike4");
+		john.add("AApeter");
+		john.add("BBdavid");
+		john.add("CCMike3");
+		john.add("DDMike4");
 		
+		john.PrintList();
+		
+		System.out.println(john.isEmpty());
+		System.out.println(john.size());
+		
+		john.get(6);
+		john.remove(6);
 		john.PrintList();
 		
 	}
