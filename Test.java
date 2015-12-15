@@ -7,6 +7,11 @@ public class Test {
 		Object peter = new Object();
 		Object david = new Object();
 		
+		ErrorMessage hell;
+		hell = ErrorMessage.NO_ERROR;
+		
+		
+		
 		System.out.println(john.isEmpty());
 		System.out.println(john.size());
 		
@@ -28,6 +33,15 @@ public class Test {
 		john.remove(1);
 		john.PrintList();
 		
+		john.add("HKHJHH");
+		john.add("sdhfhdfs");
+		john.PrintList();
+		john.add(5, "NEW BOY");
+		john.PrintList();
+		
+		Double a = 3.14;
+		
+		System.out.println(a.toString());
 	}
 	
 	

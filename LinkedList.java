@@ -60,7 +60,22 @@ public class LinkedList /*implements List*/ {
 	}
 
 	//@Override
-	public ReturnObject add(int index, Object item) {
+	public ReturnObject add(int index, String item) {
+		if(index < 0 || index > indx) {
+			System.out.println("ERROR");
+		}
+		else {
+			LinkedList current = startList;
+			for(int i = 0; i < index; i++) {
+				current = current.next;
+			}
+			System.out.println(current.obj + " has a new neighbour in " + item);
+			LinkedList temp = new LinkedList();
+			temp.obj = item;
+			temp.next = current.next;
+			current.next = temp;
+			indx++;
+		}
 		return null;
 	}
 
