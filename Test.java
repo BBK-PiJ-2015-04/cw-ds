@@ -41,10 +41,11 @@ public class Test {
 		john.add(0, "NEW BOY");
 		john.PrintList();
 		
-		Double a = 3.14;
+		ArrayList dave = new ArrayList();
+		dave.add("peter");
+		dave.add(544);
+		dave.add(232.22);
 		
-		System.out.println(a.toString());
 	}
-	
 	
 }

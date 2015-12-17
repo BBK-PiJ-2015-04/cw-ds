@@ -1,6 +1,6 @@
-public class LinkedList /*implements List*/ {
+public class LinkedList implements List {
 	
-	private String obj;
+	private Object obj;
 	private LinkedList next;
 	
 	LinkedList() {
@@ -12,7 +12,7 @@ public class LinkedList /*implements List*/ {
 	private static LinkedList startList = new LinkedList();
 	
 	
-	//@Override
+	@Override
 	public boolean isEmpty() {
 		if(indx == -1) {
 			return true;
@@ -22,12 +22,12 @@ public class LinkedList /*implements List*/ {
 		}
 	}
 
-	//@Override
+	@Override
 	public int size() {
 		return indx + 1;
 	}
 
-	//@Override
+	@Override
 	public ReturnObject get(int index) {
 		if(index < 0 || index > indx) {
 			System.out.println("ERROR");
@@ -42,7 +42,7 @@ public class LinkedList /*implements List*/ {
 		return null;
 	}
 
-	//@Override
+	@Override
 	public ReturnObject remove(int index) {
 		if(index < 0 || index > indx) {
 			System.out.println("ERROR");
@@ -59,8 +59,8 @@ public class LinkedList /*implements List*/ {
 		return null;
 	}
 
-	//@Override
-	public ReturnObject add(int index, String item) {
+	@Override
+	public ReturnObject add(int index, Object item) {
 		if(index < 0 || index > indx) {
 			System.out.println("ERROR");
 		}
@@ -86,8 +86,8 @@ public class LinkedList /*implements List*/ {
 		return null;
 	}
 
-	//@Override
-	public ReturnObject add(String item) {
+	@Override
+	public ReturnObject add(Object item) {
 		if(startList.obj == null) {
 			startList.obj = item;
 			indx++;
