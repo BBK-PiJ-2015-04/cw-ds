@@ -64,9 +64,16 @@ public class LinkedList /*implements List*/ {
 		if(index < 0 || index > indx) {
 			System.out.println("ERROR");
 		}
+		else if(index == 0) {
+			LinkedList temp = new LinkedList();
+			temp.obj = item;
+			temp.next = startList;
+			startList = temp;
+			indx++;
+		}
 		else {
 			LinkedList current = startList;
-			for(int i = 0; i < index; i++) {
+			for(int i = 0; i < (index - 1); i++) {
 				current = current.next;
 			}
 			System.out.println(current.obj + " has a new neighbour in " + item);

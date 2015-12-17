@@ -12,6 +12,8 @@ public class Test {
 		
 		
 		
+		
+		
 		System.out.println(john.isEmpty());
 		System.out.println(john.size());
 		
@@ -36,7 +38,7 @@ public class Test {
 		john.add("HKHJHH");
 		john.add("sdhfhdfs");
 		john.PrintList();
-		john.add(5, "NEW BOY");
+		john.add(0, "NEW BOY");
 		john.PrintList();
 		
 		Double a = 3.14;
