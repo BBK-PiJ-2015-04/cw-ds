@@ -11,7 +11,6 @@ public class LinkedList implements List {
 	private static int indx = -1;
 	private static LinkedList startList = new LinkedList();
 	
-	
 	@Override
 	public boolean isEmpty() {
 		if(indx == -1) {
@@ -30,39 +29,46 @@ public class LinkedList implements List {
 	@Override
 	public ReturnObject get(int index) {
 		if(index < 0 || index > indx) {
-			System.out.println("ERROR");
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			return answer;
 		}
 		else {
 			LinkedList current = startList;
 			for(int i = 0; i < index; i++) {
 				current = current.next;
 			}
-		System.out.println(current.obj);
-		}
-		return null;
+			ReturnObjectImpl answer = new ReturnObjectImpl(current.obj);
+			return answer;
+		}	
 	}
 
 	@Override
 	public ReturnObject remove(int index) {
 		if(index < 0 || index > indx) {
-			System.out.println("ERROR");
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			return answer;
 		}
 		else {
 			LinkedList current = startList;
 			for(int i = 0; i < (index - 1); i++) {
 				current = current.next;
 			}
-			System.out.println(current.next.obj + " is history!");
+			ReturnObjectImpl answer = new ReturnObjectImpl(current.next.obj);
 			current.next = current.next.next;
 			indx--;
+			return answer;
 		}
-		return null;
 	}
 
 	@Override
 	public ReturnObject add(int index, Object item) {
-		if(index < 0 || index > indx) {
-			System.out.println("ERROR");
+		if(item == null) {
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+			return answer;
+		}
+		else if(index < 0 || index > indx) {
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			return answer;
 		}
 		else if(index == 0) {
 			LinkedList temp = new LinkedList();
@@ -70,20 +76,20 @@ public class LinkedList implements List {
 			temp.next = startList;
 			startList = temp;
 			indx++;
+			return null;
 		}
 		else {
 			LinkedList current = startList;
 			for(int i = 0; i < (index - 1); i++) {
 				current = current.next;
 			}
-			System.out.println(current.obj + " has a new neighbour in " + item);
 			LinkedList temp = new LinkedList();
 			temp.obj = item;
 			temp.next = current.next;
 			current.next = temp;
 			indx++;
+			return null;
 		}
-		return null;
 	}
 
 	@Override
@@ -91,30 +97,26 @@ public class LinkedList implements List {
 		if(startList.obj == null) {
 			startList.obj = item;
 			indx++;
-			//System.out.println(indx);
+			return null;
 		}
 		else {
 			if(startList.next == null) {
-				//System.out.println(startList.obj);
-				//System.out.println(item);
 				startList.next = new LinkedList();
 				startList.next.obj = item;
-				//System.out.println(startList.next.obj);
 				indx++;
+				return null;
 			}
 			else {
 				LinkedList current = startList;
 				while (current.next != null) {
 					current = current.next;
 				}
-				//System.out.println(indx);
-				//System.out.println(current.obj);
 				current.next = new LinkedList();
 				current.next.obj = item;
 				indx++;
+				return null;
 			}
 		}
-		return null;
 	}
 	
 	public void PrintList() {
@@ -126,8 +128,7 @@ public class LinkedList implements List {
 
 		}
 		System.out.println(current.obj);
-		System.out.println(indx);
-		
+		System.out.println();
 	}
 	
 }

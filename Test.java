@@ -4,34 +4,31 @@ public class Test {
 		
 		LinkedList john = new LinkedList();
 		
-		Object peter = new Object();
-		Object david = new Object();
-		
-		ErrorMessage hell;
-		hell = ErrorMessage.NO_ERROR;
-		
-		
-		
-		
+		//ErrorMessage hell;
+		//hell = ErrorMessage.NO_ERROR;
 		
 		System.out.println(john.isEmpty());
 		System.out.println(john.size());
 		
 		john.add("peter");
-		john.add("david");
+		john.add(2.718281828);
 		john.add("Mike3");
-		john.add("Mike4");
-		john.add("AApeter");
-		john.add("BBdavid");
-		john.add("CCMike3");
-		john.add("DDMike4");
+		john.add(null);
+		john.add(0, "Mikey");
 		
 		john.PrintList();
 		
 		System.out.println(john.isEmpty());
 		System.out.println(john.size());
 		
-		john.get(7);
+		ReturnObject test1 = john.remove(4);
+		System.out.println(test1.getError());
+		System.out.println(test1.hasError());
+		System.out.println(test1.getReturnValue());
+		
+		john.PrintList();
+		
+		/*john.get(7);
 		john.remove(1);
 		john.PrintList();
 		
@@ -39,12 +36,7 @@ public class Test {
 		john.add("sdhfhdfs");
 		john.PrintList();
 		john.add(0, "NEW BOY");
-		john.PrintList();
-		
-		ArrayList dave = new ArrayList();
-		dave.add("peter");
-		dave.add(544);
-		dave.add(232.22);
+		john.PrintList();*/
 		
 	}
 	
