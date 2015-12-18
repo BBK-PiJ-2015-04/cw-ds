@@ -26,7 +26,7 @@ public class ReturnObjectImpl implements ReturnObject {
 	@Override
 	public ErrorMessage getError() {
 		return errorMessage;
-	}		
+	}
 
 	@Override
 	public Object getReturnValue() {

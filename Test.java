@@ -10,7 +10,7 @@ public class Test {
 		System.out.println(john.isEmpty());
 		System.out.println(john.size());
 		
-		john.add("peter");
+		System.out.println(john.add(null).getError());
 		john.add(2.718281828);
 		john.add("Mike3");
 		john.add(null);

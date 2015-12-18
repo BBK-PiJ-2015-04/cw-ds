@@ -76,7 +76,8 @@ public class LinkedList implements List {
 			temp.next = startList;
 			startList = temp;
 			indx++;
-			return null;
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+			return answer;
 		}
 		else {
 			LinkedList current = startList;
@@ -88,23 +89,30 @@ public class LinkedList implements List {
 			temp.next = current.next;
 			current.next = temp;
 			indx++;
-			return null;
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+			return answer;;
 		}
 	}
 
 	@Override
 	public ReturnObject add(Object item) {
-		if(startList.obj == null) {
+		if(item == null) {
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+			return answer;
+		}
+		else if(startList.obj == null) {
 			startList.obj = item;
 			indx++;
-			return null;
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+			return answer;
 		}
 		else {
 			if(startList.next == null) {
 				startList.next = new LinkedList();
 				startList.next.obj = item;
 				indx++;
-				return null;
+				ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+				return answer;
 			}
 			else {
 				LinkedList current = startList;
@@ -114,7 +122,8 @@ public class LinkedList implements List {
 				current.next = new LinkedList();
 				current.next.obj = item;
 				indx++;
-				return null;
+				ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+				return answer;
 			}
 		}
 	}
@@ -122,6 +131,8 @@ public class LinkedList implements List {
 	public void PrintList() {
 		
 		LinkedList current = startList;
+		System.out.println();
+		System.out.println("The List With " + (indx + 1) + " Elements");
 		while(current.next != null) {
 			System.out.println(current.obj);
 			current = current.next;

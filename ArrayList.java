@@ -1,15 +1,14 @@
 public class ArrayList implements List {
 	
-	private Object obj;
-	private ArrayList next;
+	private static int arraySize = 8;
+	private Object[] arrList = new arrList[arraySize];
 	
-	ArrayList() {
-		obj = null;
-		next = null;
-	}
 	
 	private static int indx = -1;
 	private static ArrayList startList = new ArrayList();
+	
+	
+	
 	
 	@Override
 	public boolean isEmpty() {
