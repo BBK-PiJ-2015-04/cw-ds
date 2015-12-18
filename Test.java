@@ -2,7 +2,7 @@ public class Test {
 	
 	public static void main(String[] args) {
 		
-		LinkedList john = new LinkedList();
+		FunctionalLinkedList john = new FunctionalLinkedList();
 		
 		//ErrorMessage hell;
 		//hell = ErrorMessage.NO_ERROR;
@@ -11,10 +11,11 @@ public class Test {
 		System.out.println(john.size());
 		
 		System.out.println(john.add(null).getError());
+		john.add(0, "First boy");
 		john.add(2.718281828);
 		john.add("Mike3");
 		john.add(null);
-		john.add(0, "Mikey");
+		john.add(1, "Mikey");
 		
 		john.PrintList();
 		
@@ -27,6 +28,8 @@ public class Test {
 		System.out.println(test1.getReturnValue());
 		
 		john.PrintList();
+		System.out.println(john.head().getReturnValue());
+		john.rest();
 		
 		/*john.get(7);
 		john.remove(1);

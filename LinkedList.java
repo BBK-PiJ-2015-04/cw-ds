@@ -90,7 +90,7 @@ public class LinkedList implements List {
 			current.next = temp;
 			indx++;
 			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
-			return answer;;
+			return answer;
 		}
 	}
 
@@ -128,6 +128,7 @@ public class LinkedList implements List {
 		}
 	}
 	
+	// Testing method. REMOVE when done!
 	public void PrintList() {
 		
 		LinkedList current = startList;

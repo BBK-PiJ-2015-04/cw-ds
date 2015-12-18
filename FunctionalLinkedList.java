@@ -1,10 +1,20 @@
-public class FunctiionalLinkedList implements FunctionalList {
+public class FunctionalLinkedList extends LinkedList implements FunctionalList {
     
+	@Override
 	public ReturnObject head() {
-		return null;
+		return get(0);
 	}
 
-    public FunctionalList rest(){
+    @Override
+	public FunctionalList rest() {
+		FunctionalLinkedList retList = new FunctionalLinkedList();
+		int aaa = size();
+		for(int i = 0; i < aaa; i++) {
+			retList.add(get(i).getReturnValue());		
+			System.out.println(get(i).getReturnValue());		
+			System.out.println("Hello");
+		}
+		
 		return null;
 	}
 }
