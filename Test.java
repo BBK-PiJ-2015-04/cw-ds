@@ -11,49 +11,7 @@ public class Test {
 		Test dummy = new Test();
 		
 		dummy.Launch();
-		
-		/*
-		FunctionalLinkedList john = new FunctionalLinkedList();
-		
-		//ErrorMessage hell;
-		//hell = ErrorMessage.NO_ERROR;
-		
-		System.out.println(john.isEmpty());
-		System.out.println(john.size());
-		
-		System.out.println(john.add(null).getError());
-		john.add(0, "First boy");
-		john.add(2.718281828);
-		john.add("Mike3");
-		john.add(null);
-		john.add(1, "Mikey");
-		
-		john.PrintList();
-		
-		System.out.println(john.isEmpty());
-		System.out.println(john.size());
-		
-		ReturnObject test1 = john.remove(4);
-		System.out.println(test1.getError());
-		System.out.println(test1.hasError());
-		System.out.println(test1.getReturnValue());
-		
-		john.PrintList();
-		System.out.println(john.head().getReturnValue());
-		john.rest();
-		
-		*/
-		
-		/*john.get(7);
-		john.remove(1);
-		john.PrintList();
-		
-		john.add("HKHJHH");
-		john.add("sdhfhdfs");
-		john.PrintList();
-		john.add(0, "NEW BOY");
-		john.PrintList();*/
-		
+	
 	}
 	
 	private void Launch() {
@@ -62,45 +20,75 @@ public class Test {
 			
 		String userChoice = "0";
 		
-		while(!userChoice.equals("6")) {
+		while(!userChoice.equals("z")) {
 			
 			System.out.println("Choose from the following:\n");
-			System.out.println("(1) Create a new list.");
-			System.out.println("(2) Add objects to the list.");
-			System.out.println("(3) Get objects from the list.");
-			System.out.println("(4) Remove objects from the list.");
-			System.out.println("(5) Print the list.");
-			System.out.println("(6) Exit the program.\n");
+			System.out.println("(a) Create a new list.");
+			System.out.println("(b) Is the list empty?");
+			System.out.println("(c) The size of the list?");
+			System.out.println("(d) Add objects to the end of the list.");
+			System.out.println("(e) Add loads of random objects to the end of the list.");
+			System.out.println("(f) Add objects to a specific part of the list.");
+			System.out.println("(g) Add loads of random objects to a specific part of the list.");
+			System.out.println("(h) Get objects from the list.");
+			System.out.println("(i) Get loads of objects from the list.");
+			System.out.println("(j) Remove objects from the list.");
+			System.out.println("(k) Remove loads of objects from the list.");
+			System.out.println("(l) Print the list.");
+			System.out.println("(m) Change the current list.");
+			System.out.println("(z) Exit the program.\n");
 			System.out.print("Your choice: ");	
 			
 			Scanner scanny = new Scanner(System.in);
 			userChoice = scanny.nextLine();
 			
-			if(userChoice.equals("1")) {
+			if(userChoice.equals("a")) {
 				createList();
-				System.out.println("ONE");
 			}
 			
-			else if(userChoice.equals("2")) {
-				addToList();
-				System.out.println("TWO");
+			else if(userChoice.equals("b")) {
+				if(listCounter == 0) {
+					System.out.println("\nNo list created yet!\n");
+				}
+				else {
+					System.out.println(myLists[currentList].isEmpty()? "\nIt is empty.\n" : "\nIt is NOT empty!\n");
+				}
 			}
 		
-			else if(userChoice.equals("3")) {
-				System.out.println("THREE");
+			else if(userChoice.equals("c")) {
+				if(listCounter == 0) {
+					System.out.println("\nNo list created yet!\n");
+				}
+				else {
+					System.out.println("\nThere are " + myLists[currentList].size() + " elements in the list.\n");
+				}
+			}
+		
+			else if(userChoice.equals("d")) {
+				addToList();
+			}
+		
+			else if(userChoice.equals("e")) {
+				addLoadsToList();
 			}
 			
-			else if(userChoice.equals("4")) {
-				System.out.println("FOUR");
+			else if(userChoice.equals("f")) {
+				addToListX();
 			}
 			
-			else if(userChoice.equals("5")) {
+			else if(userChoice.equals("l")) {
 				printList();
-				System.out.println("FIVE");
+			}
+			
+			else if(userChoice.equals("m")) {
+				System.out.print("Enter the desired list number: ");
+				userChoice = scanny.nextLine();
+				currentList = Integer.parseInt(userChoice) - 1;
+				System.out.println("\nThe current list is list number " + (currentList + 1) + ".\n");
 			}
 			
 			else {
-				if(userChoice.equals("6")) {
+				if(userChoice.equals("z")) {
 					System.out.println("\nHave a nice day!\n");
 				}
 				else {
@@ -115,7 +103,7 @@ public class Test {
 		listCounter++;
 		myLists[listCounter - 1] = new LinkedList();
 		currentList = listCounter - 1;
-		System.out.println("New list created." + currentList);
+		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
 	
 	}
 	
@@ -123,12 +111,51 @@ public class Test {
 	
 		String userChoice = "1";
 		
-		while(!userChoice.equals("0")) {
-			System.out.print("\nEnter a String ('0' to end) : ");
+		while(true) {
+			System.out.print("\nEnter a String ('0' to end, 'null' for null) : ");
 			Scanner scanny = new Scanner(System.in);
 			userChoice = scanny.nextLine();
-			myLists[currentList].add(userChoice);
+			if(userChoice.equals("0")) {
+				break;
+			}
+			if(userChoice.equals("null")) {
+				System.out.println("\nStatus: " + myLists[currentList].add(null).getError());
+			}
+			else {
+				System.out.println("\nStatus: " + myLists[currentList].add(userChoice).getError());
+			}
 		}
+	}
+	
+	private void addLoadsToList() {
+		
+		System.out.print("\nHow many elements to add? : ");
+		Scanner scanny = new Scanner(System.in);
+		String userChoice = scanny.nextLine();
+		int qty = Integer.parseInt(userChoice);
+		long timey = System.currentTimeMillis();
+		for(int i = 0; i < qty; i++) {
+			myLists[currentList].add(Math.random() * 1000);
+		}
+		timey = System.currentTimeMillis() - timey;
+		System.out.println(qty + " elements added in " + timey + " milliseconds.");
+	}
+	
+	private void addToListX() {
+		
+		System.out.print("\nEnter the index: ");
+		Scanner scanny = new Scanner(System.in);
+		String userChoice = scanny.nextLine();
+		int indx = Integer.parseInt(userChoice);
+		System.out.print("\nEnter a String ('null' for null) : ");
+		userChoice = scanny.nextLine();
+		if(userChoice.equals("null")) {
+			System.out.println("\nStatus: " + myLists[currentList].add(indx, null).getError() + "\n");
+		}
+		else {
+			System.out.println("\nStatus: " + myLists[currentList].add(indx, userChoice).getError() + "\n");
+		}
+		
 	}
 	
 	private void printList() {
@@ -136,6 +163,7 @@ public class Test {
 		for(int i = 0; i < myLists[currentList].size(); i++) {
 			System.out.println(myLists[currentList].get(i).getReturnValue());
 		}
+		System.out.println();
 		
 	}
 	
