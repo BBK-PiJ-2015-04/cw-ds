@@ -58,11 +58,12 @@ public class Test {
 	
 	private void Launch() {
 		
+		System.out.println("\nCOURSEWORK TWO - CHECKER!\n");
+			
 		String userChoice = "0";
 		
 		while(!userChoice.equals("6")) {
 			
-			System.out.println("\nCOURSEWORK TWO - CHECKER!\n");
 			System.out.println("Choose from the following:\n");
 			System.out.println("(1) Create a new list.");
 			System.out.println("(2) Add objects to the list.");
@@ -94,15 +95,16 @@ public class Test {
 			}
 			
 			else if(userChoice.equals("5")) {
+				printList();
 				System.out.println("FIVE");
 			}
 			
 			else {
-				if(!userChoice.equals("6")) {
-					System.out.println("\n\nINVALID CHOICE!");
+				if(userChoice.equals("6")) {
+					System.out.println("\nHave a nice day!\n");
 				}
 				else {
-					System.out.println("\n\nHave a nice day!");
+					System.out.println("\nINVALID CHOICE!\n");
 				}
 			}
 		}
@@ -119,9 +121,22 @@ public class Test {
 	
 	private void addToList() {
 	
-		myLists[currentList].add("John");
+		String userChoice = "1";
 		
+		while(!userChoice.equals("0")) {
+			System.out.print("\nEnter a String ('0' to end) : ");
+			Scanner scanny = new Scanner(System.in);
+			userChoice = scanny.nextLine();
+			myLists[currentList].add(userChoice);
+		}
 	}
 	
+	private void printList() {
+		
+		for(int i = 0; i < myLists[currentList].size(); i++) {
+			System.out.println(myLists[currentList].get(i).getReturnValue());
+		}
+		
+	}
 	
 }
