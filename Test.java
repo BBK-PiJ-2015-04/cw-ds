@@ -263,9 +263,9 @@ public class Test {
 			System.out.println(myLists[currentList].get(i).getReturnValue());
 		}
 		System.out.println();
-		FunctionalLinkedList temp = new FunctionalLinkedList();
-		temp = myLists[currentList].rest();
-		myLists[currentList] = temp;
+		//FunctionalLinkedList temp = new FunctionalLinkedList();
+		//temp = myLists[currentList].rest();
+		//myLists[currentList] = temp;
 	}
 	
 }
