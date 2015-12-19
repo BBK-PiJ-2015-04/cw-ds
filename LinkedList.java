@@ -10,6 +10,8 @@ public class LinkedList implements List {
 	
 	private static int indx = -1;
 	private static LinkedList startList = new LinkedList();
+	private static LinkedList lastMan; // Pointer to the last element of the list.
+	//                                    To speed up adding at the end of the list.
 	
 	@Override
 	public boolean isEmpty() {
@@ -46,6 +48,12 @@ public class LinkedList implements List {
 	public ReturnObject remove(int index) {
 		if(index < 0 || index > indx) {
 			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			return answer;
+		}
+		else if(index == 0) {
+			ReturnObjectImpl answer = new ReturnObjectImpl(startList.obj);
+			startList = startList.next;
+			indx--;
 			return answer;
 		}
 		else {
@@ -111,17 +119,23 @@ public class LinkedList implements List {
 				startList.next = new LinkedList();
 				startList.next.obj = item;
 				indx++;
+				lastMan = startList.next; // New line
 				ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 				return answer;
 			}
 			else {
-				LinkedList current = startList;
+				lastMan.next = new LinkedList();
+				lastMan.next.obj = item;
+				lastMan = lastMan.next;
+				indx++;
+				
+				/*LinkedList current = startList;
 				while (current.next != null) {
 					current = current.next;
 				}
 				current.next = new LinkedList();
 				current.next.obj = item;
-				indx++;
+				indx++;*/
 				ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 				return answer;
 			}

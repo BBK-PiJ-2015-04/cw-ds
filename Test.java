@@ -36,7 +36,7 @@ public class Test {
 			System.out.println("(k) Remove loads of objects from the list.");
 			System.out.println("(l) Print the list.");
 			System.out.println("(m) Change the current list.");
-			System.out.println("(z) Exit the program.\n");
+			System.out.println("\n(z) Exit the program.\n");
 			System.out.print("Your choice: ");	
 			
 			Scanner scanny = new Scanner(System.in);
@@ -74,6 +74,26 @@ public class Test {
 			
 			else if(userChoice.equals("f")) {
 				addToListX();
+			}
+			
+			else if(userChoice.equals("g")) {
+				addLoadsToListX();
+			}
+			
+			else if(userChoice.equals("h")) {
+				getFromList();
+			}
+			
+			else if(userChoice.equals("i")) {
+				getLoadsFromList();
+			}
+			
+			else if(userChoice.equals("j")) {
+				removeFromList();
+			}
+			
+			else if(userChoice.equals("k")) {
+				removeLoadsFromList();
 			}
 			
 			else if(userChoice.equals("l")) {
@@ -138,7 +158,7 @@ public class Test {
 			myLists[currentList].add(Math.random() * 1000);
 		}
 		timey = System.currentTimeMillis() - timey;
-		System.out.println(qty + " elements added in " + timey + " milliseconds.");
+		System.out.println(qty + " elements added in " + (double) timey / 1000 + " seconds.");
 	}
 	
 	private void addToListX() {
@@ -155,6 +175,78 @@ public class Test {
 		else {
 			System.out.println("\nStatus: " + myLists[currentList].add(indx, userChoice).getError() + "\n");
 		}
+		
+	}
+	
+	private void addLoadsToListX() {
+		
+		System.out.print("\nHow many elements to add? : ");
+		Scanner scanny = new Scanner(System.in);
+		String userChoice = scanny.nextLine();
+		int qty = Integer.parseInt(userChoice);
+		System.out.print("\nEnter the index: ");
+		userChoice = scanny.nextLine();
+		int indx = Integer.parseInt(userChoice);
+		long timey = System.currentTimeMillis();
+		for(int i = 0; i < qty; i++) {
+			myLists[currentList].add(indx, Math.random() * 1000);
+		}
+		timey = System.currentTimeMillis() - timey;
+		System.out.println(qty + " elements added in " + (double) timey / 1000 + " seconds.");
+	}
+	
+	private void getFromList() {
+		
+		System.out.print("\nEnter the index: ");
+		Scanner scanny = new Scanner(System.in);
+		String userChoice = scanny.nextLine();
+		int indx = Integer.parseInt(userChoice);
+		System.out.println("\n" + myLists[currentList].get(indx).getReturnValue() + "\n");
+		
+	}
+	
+	private void getLoadsFromList() {
+		
+		System.out.print("\nHow many elements to get? : ");
+		Scanner scanny = new Scanner(System.in);
+		String userChoice = scanny.nextLine();
+		int qty = Integer.parseInt(userChoice);
+		System.out.print("\nEnter the starting index: ");
+		userChoice = scanny.nextLine();
+		int indx = Integer.parseInt(userChoice);
+		for(int i = indx; i < (indx + qty); i++) {
+			System.out.print(myLists[currentList].get(i).getReturnValue() + " ");
+		}
+		System.out.println();
+		
+	}
+	
+	private void removeFromList() {
+		
+		System.out.print("\nEnter the index: ");
+		Scanner scanny = new Scanner(System.in);
+		String userChoice = scanny.nextLine();
+		int indx = Integer.parseInt(userChoice);
+		System.out.println("\n" + myLists[currentList].remove(indx).getReturnValue() + "\n");
+		
+	}
+	
+	private void removeLoadsFromList() {
+		
+		System.out.print("\nHow many elements to remove? : ");
+		Scanner scanny = new Scanner(System.in);
+		String userChoice = scanny.nextLine();
+		int qty = Integer.parseInt(userChoice);
+		System.out.print("\nEnter the starting index: ");
+		userChoice = scanny.nextLine();
+		int indx = Integer.parseInt(userChoice);
+		long timey = System.currentTimeMillis();
+		for(int i = 0; i < qty; i++) {
+			myLists[currentList].remove(indx).getReturnValue();
+		}
+		timey = System.currentTimeMillis() - timey;
+		System.out.println(qty + " elements removed in " + (double) timey / 1000 + " seconds.");
+		System.out.println();
 		
 	}
 	
