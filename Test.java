@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Test {
 	
-	private LinkedList[] myLists = new LinkedList[10];
+	private FunctionalLinkedList[] myLists = new FunctionalLinkedList[10];
 	private int listCounter = 0;
 	private int currentList = 0;
 	
@@ -36,6 +36,7 @@ public class Test {
 			System.out.println("(k) Remove loads of objects from the list.");
 			System.out.println("(l) Print the list.");
 			System.out.println("(m) Change the current list.");
+			System.out.println("(n) Get head.");
 			System.out.println("\n(z) Exit the program.\n");
 			System.out.print("Your choice: ");	
 			
@@ -107,6 +108,12 @@ public class Test {
 				System.out.println("\nThe current list is list number " + (currentList + 1) + ".\n");
 			}
 			
+			else if(userChoice.equals("n")) {
+				System.out.println(myLists[currentList].head().hasError());
+				System.out.println(myLists[currentList].head().getError());
+				System.out.println(myLists[currentList].head().getReturnValue());
+			}
+			
 			else {
 				if(userChoice.equals("z")) {
 					System.out.println("\nHave a nice day!\n");
@@ -121,7 +128,7 @@ public class Test {
 	private void createList() {
 		
 		listCounter++;
-		myLists[listCounter - 1] = new LinkedList();
+		myLists[listCounter - 1] = new FunctionalLinkedList();
 		currentList = listCounter - 1;
 		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
 	
@@ -256,7 +263,9 @@ public class Test {
 			System.out.println(myLists[currentList].get(i).getReturnValue());
 		}
 		System.out.println();
-		
+		FunctionalLinkedList temp = new FunctionalLinkedList();
+		temp = myLists[currentList].rest();
+		myLists[currentList] = temp;
 	}
 	
 }
