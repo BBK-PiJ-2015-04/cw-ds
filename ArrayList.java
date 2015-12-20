@@ -1,23 +1,28 @@
 public class ArrayList implements List {
 	
-	private static int arraySize = 8;
-	private Object[] arrList = new arrList[arraySize];
+	private int arraySize;
+	private Object[] arrList;
+	private int indx = -1;
 	
-	
-	private static int indx = -1;
-	private static ArrayList startList = new ArrayList();
-	
-	
-	
+	public ArrayList() {
+		arraySize = 8;
+		indx = -1;
+		arrList = new Object[arraySize];
+	}
 	
 	@Override
 	public boolean isEmpty() {
-		return false;
+		if(indx == -1) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	@Override
 	public int size() {
-		return 0;
+		return indx + 1;
 	}
 
 	@Override
@@ -37,33 +42,25 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject add(Object item) {
-		if(startList.obj == null) {
-			startList.obj = item;
-			indx++;
-			//System.out.println(indx);
+		if((indx + 2) > arrList.length) {
+			DoubleIt();
 		}
-		else {
-			if(startList.next == null) {
-				//System.out.println(startList.obj);
-				//System.out.println(item);
-				startList.next = new ArrayList();
-				startList.next.obj = item;
-				//System.out.println(startList.next.obj);
-				indx++;
-			}
-			else {
-				ArrayList current = startList;
-				while (current.next != null) {
-					current = current.next;
-				}
-				//System.out.println(indx);
-				//System.out.println(current.obj);
-				current.next = new ArrayList();
-				current.next.obj = item;
-				indx++;
-			}
+		indx++;
+		arrList[indx] = item;
+		ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+		return answer;
+	}
+	
+	private void DoubleIt() {
+		System.out.println("DOUBLE TIME! Array Length: " + arrList.length + "Size " + arraySize);
+		Object[] newArray = new Object[arraySize * 2];
+		for(int i = 0; i < indx; i++) {
+			newArray[i] = arrList[i];
 		}
-		return null;
+		arrList = newArray;
+		arraySize = arraySize * 2;
+		System.out.println("DOUBLE END! Array Length: " + arrList.length + "Size " + arraySize);
+		
 	}
 
 }

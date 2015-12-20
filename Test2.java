@@ -20,9 +20,19 @@ public class Test2 {
 		
 		list3.add(list1);
 		list3.add(list2);
-	
+		
+		Object[] testarr = new Object[5];
+		int aaa = 5;
+		testarr[0] = aaa;
+		String aab = "sdassj";
+		testarr[1] = aab;
+		testarr[2] = list1;
+		LinkedList bbb = (LinkedList) testarr[2];
+		System.out.println(bbb.get(0).getReturnValue());
+		System.out.println(testarr[2] instanceof List);
+		
 		LinkedList list4 = new LinkedList();
-		list4 = list3.get(1).getReturnValue();
+		//list4 = list3.get(1).getReturnValue();
 		//System.out.println(list3.get(1).getReturnValue().get(2).getReturnValue());
 	
 	}

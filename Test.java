@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Test {
 	
-	private SampleableListImpl[] myLists = new SampleableListImpl[10];
+	private ArrayList[] myLists = new ArrayList[10];
 	private int listCounter = 0;
 	private int currentList = -1;
 	
@@ -111,9 +111,9 @@ public class Test {
 			}
 			
 			else if(userChoice.equals("n")) {
-				System.out.println(myLists[currentList].head().hasError());
+				/*System.out.println(myLists[currentList].head().hasError());
 				System.out.println(myLists[currentList].head().getError());
-				System.out.println(myLists[currentList].head().getReturnValue());
+				System.out.println(myLists[currentList].head().getReturnValue());*/
 			}
 			
 			else if(userChoice.equals("o")) {
@@ -138,7 +138,7 @@ public class Test {
 	private void createList() {
 		
 		listCounter++;
-		myLists[listCounter - 1] = new SampleableListImpl();
+		myLists[listCounter - 1] = new ArrayList();
 		currentList = listCounter - 1;
 		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
 	
@@ -146,21 +146,25 @@ public class Test {
 	
 	private void getRest() {
 		
-		listCounter++;
-		myLists[listCounter - 1] = new SampleableListImpl();
-		myLists[listCounter - 1] = (SampleableListImpl) myLists[currentList].rest();
+		/*listCounter++;
+		myLists[listCounter - 1] = new FunctionalLinkedList();
+		myLists[listCounter - 1] = (FunctionalLinkedList) myLists[currentList].rest();
 		currentList = listCounter - 1;
-		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
+		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");*/
 		
 	}
 	
 	private void getSample() {
 		
-		listCounter++;
-		myLists[listCounter - 1] = new SampleableListImpl();
-		myLists[listCounter - 1] = myLists[currentList].sample();
+		/*listCounter++;
+		SampleableListImpl temp1 = new SampleableListImpl();
+		SampleableListImpl temp2 = new SampleableListImpl();
+		temp1 = (SampleableListImpl) myLists[currentList];
+		temp2 = (SampleableListImpl) temp1.sample();
+		myLists[listCounter - 1] = new FunctionalLinkedList();
+		myLists[listCounter - 1] = temp2;
 		currentList = listCounter - 1;
-		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
+		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");*/
 		
 	}
 	
