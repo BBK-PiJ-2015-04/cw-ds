@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Test {
 	
-	private ArrayList[] myLists = new ArrayList[10];
+	private FunctionalArrayList[] myLists = new FunctionalArrayList[10];
 	private int listCounter = 0;
 	private int currentList = -1;
 	
@@ -111,9 +111,9 @@ public class Test {
 			}
 			
 			else if(userChoice.equals("n")) {
-				/*System.out.println(myLists[currentList].head().hasError());
+				System.out.println(myLists[currentList].head().hasError());
 				System.out.println(myLists[currentList].head().getError());
-				System.out.println(myLists[currentList].head().getReturnValue());*/
+				System.out.println(myLists[currentList].head().getReturnValue());
 			}
 			
 			else if(userChoice.equals("o")) {
@@ -138,7 +138,7 @@ public class Test {
 	private void createList() {
 		
 		listCounter++;
-		myLists[listCounter - 1] = new ArrayList();
+		myLists[listCounter - 1] = new FunctionalArrayList();
 		currentList = listCounter - 1;
 		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
 	
@@ -146,11 +146,11 @@ public class Test {
 	
 	private void getRest() {
 		
-		/*listCounter++;
-		myLists[listCounter - 1] = new FunctionalLinkedList();
-		myLists[listCounter - 1] = (FunctionalLinkedList) myLists[currentList].rest();
+		listCounter++;
+		myLists[listCounter - 1] = new FunctionalArrayList();
+		myLists[listCounter - 1] = (FunctionalArrayList) myLists[currentList].rest();
 		currentList = listCounter - 1;
-		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");*/
+		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
 		
 	}
 	

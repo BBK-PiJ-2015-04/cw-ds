@@ -5,8 +5,8 @@ public class ArrayList implements List {
 	private int indx = -1;
 	
 	public ArrayList() {
-		arraySize = 2; // Start with a tiny array of just two objects and then double as needed!
-		indx = -1; // no objects = -1, 1 object = 0, etc...
+		arraySize = 2;
+		indx = -1;
 		arrList = new Object[arraySize];
 	}
 	
@@ -104,25 +104,21 @@ public class ArrayList implements List {
 	}
 	
 	private void DoubleIt() {
-		System.out.println("DOUBLE TIME! Array Length: " + arrList.length + "Size " + arraySize);
 		Object[] temp = new Object[arraySize * 2];
 		for(int i = 0; i <= indx; i++) {
 			temp[i] = arrList[i];
 		}
 		arrList = temp;
 		arraySize = arraySize * 2;
-		System.out.println("DOUBLE END! Array Length: " + arrList.length + "Size " + arraySize);
 	}
 	
 	private void HalveIt() {
-		System.out.println("HALF TIME! Array Length: " + arrList.length + "Size " + arraySize);
 		Object[] temp = new Object[arraySize / 2];
 		for(int i = 0; i <= indx; i++) {
 			temp[i] = arrList[i];
 		}
 		arrList = temp;
 		arraySize = arraySize / 2;
-		System.out.println("HALF END! Array Length: " + arrList.length + "Size " + arraySize);
 	}
 
 }
