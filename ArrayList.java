@@ -5,8 +5,8 @@ public class ArrayList implements List {
 	private int indx = -1;
 	
 	public ArrayList() {
-		arraySize = 8;
-		indx = -1;
+		arraySize = 2; // Start with a tiny array of just two objects and then double as needed!
+		indx = -1; // no objects = -1, 1 object = 0, etc...
 		arrList = new Object[arraySize];
 	}
 	
@@ -27,12 +27,38 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject get(int index) {
-		return null;
+		if(index < 0 || index > indx) {
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			return answer;
+		}
+		else {
+			ReturnObjectImpl answer = new ReturnObjectImpl(arrList[index]);
+			return answer;
+		}
 	}
 
 	@Override
 	public ReturnObject remove(int index) {
-		return null;
+		if(index < 0 || index > indx) {
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			return answer;
+		}
+		else {
+			ReturnObjectImpl answer = new ReturnObjectImpl(arrList[index]);
+			Object[] temp = new Object[arraySize];
+			for(int i = 0; i < index; i++) {
+				temp[i] = arrList[i];
+			}
+			for(int i = index; i <= indx; i++) {
+				temp[i] = arrList[i + 1]; 
+			}
+			arrList = temp;
+			indx--;
+			if((indx + 1) <= (arrList.length / 2)) {
+				HalveIt();
+			}
+			return answer;
+		}
 	}
 
 	@Override
@@ -42,6 +68,10 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject add(Object item) {
+		if(item == null) {
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+			return answer;
+		}
 		if((indx + 2) > arrList.length) {
 			DoubleIt();
 		}
@@ -53,14 +83,24 @@ public class ArrayList implements List {
 	
 	private void DoubleIt() {
 		System.out.println("DOUBLE TIME! Array Length: " + arrList.length + "Size " + arraySize);
-		Object[] newArray = new Object[arraySize * 2];
-		for(int i = 0; i < indx; i++) {
-			newArray[i] = arrList[i];
+		Object[] temp = new Object[arraySize * 2];
+		for(int i = 0; i <= indx; i++) {
+			temp[i] = arrList[i];
 		}
-		arrList = newArray;
+		arrList = temp;
 		arraySize = arraySize * 2;
 		System.out.println("DOUBLE END! Array Length: " + arrList.length + "Size " + arraySize);
-		
+	}
+	
+	private void HalveIt() {
+		System.out.println("HALF TIME! Array Length: " + arrList.length + "Size " + arraySize);
+		Object[] temp = new Object[arraySize / 2];
+		for(int i = 0; i <= indx; i++) {
+			temp[i] = arrList[i];
+		}
+		arrList = temp;
+		arraySize = arraySize / 2;
+		System.out.println("HALF END! Array Length: " + arrList.length + "Size " + arraySize);
 	}
 
 }
