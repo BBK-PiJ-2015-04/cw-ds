@@ -54,7 +54,7 @@ public class ArrayList implements List {
 			}
 			arrList = temp;
 			indx--;
-			if((indx + 1) <= (arrList.length / 2)) {
+			if((indx + 1) <= (arrList.length / 3)) { // We shrink the arry when one-third the size.
 				HalveIt();
 			}
 			return answer;
@@ -63,7 +63,29 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject add(int index, Object item) {
-		return null;
+		if(index < 0 || index > indx) {
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			return answer;
+		}
+		if(item == null) {
+			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+			return answer;
+		}
+		if((indx + 2) > arrList.length) {
+			DoubleIt();
+		}
+		indx++;
+		Object[] temp = new Object[arraySize];
+		for(int i = 0; i < index; i++) {
+			temp[i] = arrList[i];
+		}
+		temp[index] = item;
+		for(int i = (index + 1); i <= indx; i++) {
+			temp[i] = arrList[i - 1]; 
+		}
+		arrList = temp;
+		ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+		return answer;
 	}
 
 	@Override
