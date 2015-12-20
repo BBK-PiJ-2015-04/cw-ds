@@ -38,6 +38,7 @@ public class Test {
 			System.out.println("(m) Change the current list.");
 			System.out.println("(n) Get head().");
 			System.out.println("(o) Get rest().");
+			System.out.println("(p) Get sample().");
 			System.out.println("\n(z) Exit the program.\n");
 			System.out.print("Your choice: ");	
 			
@@ -119,6 +120,10 @@ public class Test {
 				getRest();
 			}
 			
+			else if(userChoice.equals("p")) {
+				getSample();
+			}
+			
 			else {
 				if(userChoice.equals("z")) {
 					System.out.println("\nHave a nice day!\n");
@@ -143,7 +148,17 @@ public class Test {
 		
 		listCounter++;
 		myLists[listCounter - 1] = new SampleableListImpl();
-		myLists[listCounter - 1] = myLists[currentList].rest();
+		myLists[listCounter - 1] = (SampleableListImpl) myLists[currentList].rest();
+		currentList = listCounter - 1;
+		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
+		
+	}
+	
+	private void getSample() {
+		
+		listCounter++;
+		myLists[listCounter - 1] = new SampleableListImpl();
+		myLists[listCounter - 1] = myLists[currentList].sample();
 		currentList = listCounter - 1;
 		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
 		
