@@ -7,14 +7,16 @@ public class Test2 {
 		LinkedList list1 = new LinkedList();
 		LinkedList list2 = new LinkedList();
 	
-		list1.add("one");
+		list1.add("a");
+		list1.add("b");
+		list1.add("c");
 		list2.add("a");
 		list2.add("b");
 		list2.add("c");
-		list1.add("two");
 		
 		System.out.println(list1.size());
 		System.out.println(list2.size());
+		System.out.println(list1.equals(list2));
 		
 		LinkedList list3 = new LinkedList();
 		
@@ -27,9 +29,15 @@ public class Test2 {
 		String aab = "sdassj";
 		testarr[1] = aab;
 		testarr[2] = list1;
+		testarr[3] = list2;
 		LinkedList bbb = (LinkedList) testarr[2];
 		System.out.println(bbb.get(0).getReturnValue());
 		System.out.println(testarr[2] instanceof List);
+		System.out.println(testarr[3]);
+		System.out.println(list1 == list2);
+		System.out.println(list1.equals(list2));
+		System.out.println(testarr[2] == testarr[3]);
+		System.out.println(testarr[2].equals(testarr[3]));
 		
 		LinkedList list4 = new LinkedList();
 		//list4 = list3.get(1).getReturnValue();

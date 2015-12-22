@@ -148,7 +148,7 @@ public class Test {
 		
 		listCounter++;
 		myLists[listCounter - 1] = new FunctionalArrayList();
-		myLists[listCounter - 1] = (FunctionalArrayList) myLists[currentList].rest();
+		myLists[listCounter - 1] = (FunctionalArrayList) myLists[currentList].resty().getReturnValue();
 		currentList = listCounter - 1;
 		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
 		
