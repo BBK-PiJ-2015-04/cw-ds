@@ -19,12 +19,14 @@ public class Test2 {
 		System.out.println(list1.size());
 		System.out.println(list2.size());
 		System.out.println(list1.equals(list2));
-		System.out.println(list1.toString());
+		System.out.println(list1);
 		
 		LinkedList list3 = new LinkedList();
 		
 		list3.add(list1);
 		list3.add(list2);
+		
+		System.out.println(list3);
 		
 		/*Object[] testarr = new Object[5];
 		int aaa = 5;
