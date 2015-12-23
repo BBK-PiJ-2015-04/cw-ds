@@ -8,13 +8,14 @@ public class Test2 {
 		LinkedList list2 = new LinkedList();
 	
 		list1.add("a");
-		list1.add("b");
-		list1.add("c");
-		list2.add("x");
+		list1.add(false);
+		list1.add(2.71828);
+		list2.add("a");
 		list2.add("b");
 		list2.add("c");
 		list1.add("d");
 		list2.add("d");
+		
 		
 		System.out.println(list1.size());
 		System.out.println(list2.size());

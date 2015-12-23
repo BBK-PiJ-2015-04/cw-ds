@@ -154,10 +154,14 @@ public class LinkedList implements List {
 		String str = "(";
 		LoneRanger current = firstRanger;
 		for(int i = 0; i <= indx; i++) {
-			str = str + current.getObject() + ", ";
-			current = current.getNext();
+			if(i == indx) {
+				str = str + current.getObject() + ")";
+			}
+			else {
+				str = str + current.getObject() + ", ";
+				current = current.getNext();
+			}
 		}
-		str = str + ")";
 		return str;
 	}
 	
