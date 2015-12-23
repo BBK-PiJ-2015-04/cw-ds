@@ -156,15 +156,15 @@ public class Test {
 	
 	private void getSample() {
 		
-		/*listCounter++;
+		listCounter++;
 		SampleableListImpl temp1 = new SampleableListImpl();
 		SampleableListImpl temp2 = new SampleableListImpl();
 		temp1 = (SampleableListImpl) myLists[currentList];
 		temp2 = (SampleableListImpl) temp1.sample();
-		myLists[listCounter - 1] = new FunctionalLinkedList();
+		myLists[listCounter - 1] = new FunctionalArrayList();
 		myLists[listCounter - 1] = temp2;
 		currentList = listCounter - 1;
-		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");*/
+		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
 		
 	}
 	

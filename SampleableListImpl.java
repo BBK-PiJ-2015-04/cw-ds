@@ -1,13 +1,4 @@
-public class SampleableListImpl implements SampleableList, List {
-	
-	public SampleableListImpl() {
-		super();
-	}
-	
-	/*@Override
-	public ReturnObject add(int index) {
-		super(index);
-	}*/
+public class SampleableListImpl extends FunctionalArrayList implements SampleableList {
 	
 	@Override
 	public SampleableList sample() {

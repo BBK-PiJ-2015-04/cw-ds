@@ -128,5 +128,37 @@ public class LinkedList implements List {
 			}
 		}			
 	}
-		
+	
+	// DELETE THESE TESTING ONES BELOW!!!
+	
+	//@Override
+	public boolean equals(LinkedList list) {
+		if(indx != (list.size() - 1)) {
+			return false;
+		}
+		LoneRanger current = firstRanger;
+		for(int i = 0; i <= indx; i++) {
+			if(!current.getObject().equals(list.get(i).getReturnValue())) {
+				return false;
+			}
+			current = current.getNext();
+		}
+		return true;
+	}
+	
+	//@Override
+	public String toString() {
+		if(indx == -1) {
+			return null;
+		}
+		String str = "(";
+		LoneRanger current = firstRanger;
+		for(int i = 0; i <= indx; i++) {
+			str = str + current.getObject() + ", ";
+			current = current.getNext();
+		}
+		str = str + ")";
+		return str;
+	}
+	
 }
