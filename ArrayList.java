@@ -49,8 +49,8 @@ public class ArrayList implements List {
 			for(int i = 0; i < index; i++) {
 				temp[i] = arrList[i];
 			}
-			for(int i = index; i <= indx; i++) {
-				temp[i] = arrList[i + 1]; 
+			for(int i = index; i < indx; i++) {
+				temp[i] = arrList[i + 1];
 			}
 			arrList = temp;
 			indx--;
@@ -120,5 +120,38 @@ public class ArrayList implements List {
 		arrList = temp;
 		arraySize = arraySize / 2;
 	}
-
+	
+	// DELETE THESE TESTING ONES BELOW!!!
+	
+	@Override
+	public boolean equals(Object obj) {
+		ArrayList list = (ArrayList) obj;
+		if(indx != (list.size() - 1)) {
+			return false;
+		}
+		for(int i = 0; i <= indx; i++) {
+			if(!arrList[i].equals(list.get(i).getReturnValue())) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	@Override
+	public String toString() {
+		if(indx == -1) {
+			return null;
+		}
+		String str = "(";
+		for(int i = 0; i <= indx; i++) {
+			if(i == indx) {
+				str = str + arrList[i] + ")";
+			}
+			else {
+				str = str + arrList[i] + ", ";
+			}
+		}
+		return str;
+	}
+	
 }

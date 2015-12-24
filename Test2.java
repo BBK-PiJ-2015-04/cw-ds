@@ -4,12 +4,12 @@ public class Test2 {
 
 	public static void main(String[] args) {
 		
-		LinkedList list1 = new LinkedList();
-		LinkedList list2 = new LinkedList();
+		ArrayList list1 = new ArrayList();
+		ArrayList list2 = new ArrayList();
 	
 		list1.add("a");
-		list1.add(false);
-		list1.add(2.71828);
+		list1.add("b");
+		list1.add("c");
 		list2.add("a");
 		list2.add("b");
 		list2.add("c");
@@ -21,7 +21,7 @@ public class Test2 {
 		System.out.println(list1.get(2).getReturnValue());
 		System.out.println(list1.get(3).getReturnValue());
 		
-		System.out.println(list1.remove(-1).getReturnValue());
+		System.out.println(list1.remove(3).getReturnValue() + " removed");
 		
 		
 		System.out.println(list1.size());
@@ -29,7 +29,7 @@ public class Test2 {
 		System.out.println(list1.equals(list2));
 		System.out.println(list1);
 		
-		LinkedList list3 = new LinkedList();
+		ArrayList list3 = new ArrayList();
 		
 		list3.add(list1);
 		list3.add(list2);
@@ -39,8 +39,8 @@ public class Test2 {
 		list2.add("Another one.");
 		System.out.println(list3);
 		
-		LinkedList temp = new LinkedList();
-		temp = (LinkedList) list3.get(1).getReturnValue();
+		ArrayList temp = new ArrayList();
+		temp = (ArrayList) list3.get(1).getReturnValue();
 		System.out.println(temp.get(4).getReturnValue());
 		
 		temp.add("first one");

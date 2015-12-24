@@ -33,12 +33,18 @@ public class ImprovedStackImpl implements ImprovedStack {
 
 	@Override
 	public ImprovedStack reverse() {
-		return null;
+		ImprovedStack temp = new ImprovedStackImpl(internalList);
+		return temp;
 	}
 
 	@Override
 	public void remove(Object object) {
-		
+		for(int i = 0; i < internalList.size(); i++) {
+			if(internalList.get(i).getReturnValue().equals(object)) {
+				internalList.remove(i);
+				i--;
+			}
+		}
 	}
 
 	// Testing ones below
