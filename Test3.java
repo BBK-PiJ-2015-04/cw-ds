@@ -33,6 +33,14 @@ public class Test3 {
 		stack1.remove("a");
 		System.out.println();
 		stack1.prettyPrint();
+		System.out.println("Size: " + stack1.size());
+		
+		ImprovedStackImpl stack2 = new ImprovedStackImpl(list1);
+		stack2 = (ImprovedStackImpl) stack1.reverse();
+		
+		
+		stack2.prettyPrint();
+		stack1.prettyPrint();
 		
 		
 		

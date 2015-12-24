@@ -34,6 +34,8 @@ public class ImprovedStackImpl implements ImprovedStack {
 	@Override
 	public ImprovedStack reverse() {
 		ImprovedStack temp = new ImprovedStackImpl(internalList);
+		temp.pop();
+		temp.pop();
 		return temp;
 	}
 
