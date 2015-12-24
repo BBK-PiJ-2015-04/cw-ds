@@ -4,7 +4,8 @@ public class Test3 {
 
 	public static void main(String[] args) {
 		
-		ArrayList list1 = new ArrayList();
+		LinkedList list1 = new LinkedList();
+		LinkedList list2 = new LinkedList();
 		
 		ImprovedStackImpl stack1 = new ImprovedStackImpl(list1);
 		System.out.println(stack1.pop().getReturnValue());
@@ -40,6 +41,7 @@ public class Test3 {
 		
 		
 		stack2.prettyPrint();
+		System.out.println();
 		stack1.prettyPrint();
 		
 		

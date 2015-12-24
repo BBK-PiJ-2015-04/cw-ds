@@ -4,7 +4,7 @@ public class Test2 {
 
 	public static void main(String[] args) {
 		
-		ArrayList list1 = new ArrayList();
+		SampleableList list1 = new SampleableListImpl2("array");
 		ArrayList list2 = new ArrayList();
 	
 		list1.add("a");
@@ -15,11 +15,19 @@ public class Test2 {
 		list2.add("c");
 		list1.add("d");
 		list2.add("d");
+		list1.add("e");
 		
-		System.out.println(list1.get(0).getReturnValue());
+		SampleableList listx = list1.sample();
+		
+		System.out.println("\n" + list1.get(0).getReturnValue());
 		System.out.println(list1.get(1).getReturnValue());
 		System.out.println(list1.get(2).getReturnValue());
-		System.out.println(list1.get(3).getReturnValue());
+		System.out.println(list1.get(3).getReturnValue() + "\n");
+		
+		System.out.println("\n" + listx.get(0).getReturnValue());
+		System.out.println(listx.get(1).getReturnValue());
+		System.out.println(listx.get(2).getReturnValue());
+		System.out.println(listx.get(3).getReturnValue() + "\n");
 		
 		System.out.println(list1.remove(3).getReturnValue() + " removed");
 		

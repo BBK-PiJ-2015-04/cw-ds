@@ -28,47 +28,43 @@ public class ArrayList implements List {
 	@Override
 	public ReturnObject get(int index) {
 		if(index < 0 || index > indx) {
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
-		else {
-			ReturnObjectImpl answer = new ReturnObjectImpl(arrList[index]);
-			return answer;
-		}
+		ReturnObject answer = new ReturnObjectImpl(arrList[index]);
+		return answer;
 	}
 
 	@Override
 	public ReturnObject remove(int index) {
 		if(index < 0 || index > indx) {
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
-		else {
-			ReturnObjectImpl answer = new ReturnObjectImpl(arrList[index]);
-			Object[] temp = new Object[arraySize];
-			for(int i = 0; i < index; i++) {
-				temp[i] = arrList[i];
-			}
-			for(int i = index; i < indx; i++) {
-				temp[i] = arrList[i + 1];
-			}
-			arrList = temp;
-			indx--;
-			if((indx + 1) <= (arrList.length / 3)) { // We shrink the arry when one-third the size.
-				HalveIt();
-			}
-			return answer;
+		ReturnObject answer = new ReturnObjectImpl(arrList[index]);
+		Object[] temp = new Object[arraySize];
+		for(int i = 0; i < index; i++) {
+			temp[i] = arrList[i];
 		}
+		for(int i = index; i < indx; i++) {
+			temp[i] = arrList[i + 1];
+		}
+		arrList = temp;
+		indx--;
+		if((indx + 1) <= (arrList.length / 3)) { // We shrink the arry when one-third the size.
+			HalveIt();
+		}
+		return answer;
 	}
 
 	@Override
 	public ReturnObject add(int index, Object item) {
 		if(index < 0 || index > indx) {
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
 		if(item == null) {
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 			return answer;
 		}
 		if((indx + 2) > arrList.length) {
@@ -84,14 +80,14 @@ public class ArrayList implements List {
 			temp[i] = arrList[i - 1]; 
 		}
 		arrList = temp;
-		ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+		ReturnObject answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 		return answer;
 	}
 
 	@Override
 	public ReturnObject add(Object item) {
 		if(item == null) {
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 			return answer;
 		}
 		if((indx + 2) > arrList.length) {
@@ -99,7 +95,7 @@ public class ArrayList implements List {
 		}
 		indx++;
 		arrList[indx] = item;
-		ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+		ReturnObject answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 		return answer;
 	}
 	

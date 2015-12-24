@@ -13,4 +13,5 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 		}
 		return retList;
 	}
+	
 }

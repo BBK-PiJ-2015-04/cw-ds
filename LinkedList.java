@@ -1,10 +1,10 @@
 public class LinkedList implements List {
 	
 	private LoneRanger firstRanger;
-	private LoneRanger lastRanger; // this will speed up the stack operations...
+	private LoneRanger lastRanger;
 	private int indx;
 	
-	LinkedList() {
+	public LinkedList() {
 		firstRanger = null;
 		lastRanger = null;
 		indx = -1;
@@ -28,112 +28,99 @@ public class LinkedList implements List {
 	@Override
 	public ReturnObject get(int index) {
 		if(index < 0 || index > indx) {
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
-		
-		// create new case for last element - shortcut to LastRanger
-		
-		else {
-			LoneRanger current = firstRanger;
-			for(int i = 0; i < index; i++) {
-				current = current.getNext();
-			}
-			ReturnObjectImpl answer = new ReturnObjectImpl(current.getObject());
+		if(index == indx) {
+			ReturnObject answer = new ReturnObjectImpl(lastRanger.getObject());
 			return answer;
-		}	
+		}
+		LoneRanger current = firstRanger;
+		for(int i = 0; i < index; i++) {
+			current = current.getNext();
+		}
+		ReturnObject answer = new ReturnObjectImpl(current.getObject());
+		return answer;	
 	}
 
 	@Override
 	public ReturnObject remove(int index) {
 		if(index < 0 || index > indx) {
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
-		
-		// create new case for last element - shortcut to LastRanger
-		
-		
-		else if(index == 0) {
-			ReturnObjectImpl answer = new ReturnObjectImpl(firstRanger.getObject());
+		if(index == 0) {
+			ReturnObject answer = new ReturnObjectImpl(firstRanger.getObject());
 			firstRanger = firstRanger.getNext();
 			indx--;
 			return answer;
 		}
-		else {
-			LoneRanger current = firstRanger;
-			for(int i = 0; i < (index - 1); i++) {
-				current = current.getNext();
-			}
-			ReturnObjectImpl answer = new ReturnObjectImpl(current.getNext().getObject());
-			current.setNext(current.getNext().getNext());
-			indx--;
-			return answer;
+		LoneRanger current = firstRanger;
+		for(int i = 0; i < (index - 1); i++) {
+			current = current.getNext();
 		}
+		ReturnObject answer = new ReturnObjectImpl(current.getNext().getObject());
+		current.setNext(current.getNext().getNext());
+		indx--;
+		return answer;
 	}
 
 	@Override
 	public ReturnObject add(int index, Object item) {
 		if(item == null) {
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 			return answer;
 		}
-		else if(index < 0 || index > indx) {
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		if(index < 0 || index > indx) {
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
-		else if(index == 0) {
+		if(index == 0) {
 			LoneRanger temp = new LoneRanger(item);
 			temp.setNext(firstRanger);
 			firstRanger = temp;
 			indx++;
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 			return answer;
 		}
-		else {
-			LoneRanger current = firstRanger;
-			for(int i = 0; i < (index - 1); i++) {
-				current = current.getNext();
-			}
-			LoneRanger temp = new LoneRanger(item);
-			temp.setNext(current.getNext());
-			current.setNext(temp);
-			indx++;
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
-			return answer;
+		LoneRanger current = firstRanger;
+		for(int i = 0; i < (index - 1); i++) {
+			current = current.getNext();
 		}
+		LoneRanger temp = new LoneRanger(item);
+		temp.setNext(current.getNext());
+		current.setNext(temp);
+		indx++;
+		ReturnObject answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+		return answer;
 	}
 
 	@Override
 	public ReturnObject add(Object item) {
 		if(item == null) {
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 			return answer;
 		}
-		else if(firstRanger == null) {
+		if(firstRanger == null) {
 			firstRanger = new LoneRanger(item);
 			indx++;
-			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 			return answer;
 		}
-		else {
-			if(firstRanger.getNext() == null) {
-				LoneRanger temp = new LoneRanger(item);
-				firstRanger.setNext(temp);
-				lastRanger = temp;
-				indx++;
-				ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
-				return answer;
-			}
-			else {
-				LoneRanger temp = new LoneRanger(item);
-				lastRanger.setNext(temp);
-				lastRanger = lastRanger.getNext();
-				indx++;
-				ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
-				return answer;
-			}
-		}			
+		if(firstRanger.getNext() == null) {
+			LoneRanger temp = new LoneRanger(item);
+			firstRanger.setNext(temp);
+			lastRanger = temp;
+			indx++;
+			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+			return answer;
+		}
+		LoneRanger temp = new LoneRanger(item);
+		lastRanger.setNext(temp);
+		lastRanger = lastRanger.getNext();
+		indx++;
+		ReturnObject answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+		return answer;	
 	}
 	
 	// DELETE THESE TESTING ONES BELOW!!!
