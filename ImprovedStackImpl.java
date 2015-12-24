@@ -1,7 +1,9 @@
-public class StackImpl extends AbstractStack  {
-
-    public StackImpl(List list) {
-		super(list);
+public class ImprovedStackImpl implements ImprovedStack {
+	
+	private List internalList;
+	
+	public ImprovedStackImpl(List list) {
+	  internalList = list;
     }
 	
 	@Override
@@ -27,6 +29,16 @@ public class StackImpl extends AbstractStack  {
 	@Override
 	public ReturnObject pop() {
 		return internalList.remove(internalList.size() - 1);
+	}
+
+	@Override
+	public ImprovedStack reverse() {
+		return null;
+	}
+
+	@Override
+	public void remove(Object object) {
+		
 	}
 
 	// Testing ones below

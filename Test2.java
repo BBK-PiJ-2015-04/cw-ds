@@ -16,6 +16,13 @@ public class Test2 {
 		list1.add("d");
 		list2.add("d");
 		
+		System.out.println(list1.get(0).getReturnValue());
+		System.out.println(list1.get(1).getReturnValue());
+		System.out.println(list1.get(2).getReturnValue());
+		System.out.println(list1.get(3).getReturnValue());
+		
+		System.out.println(list1.remove(-1).getReturnValue());
+		
 		
 		System.out.println(list1.size());
 		System.out.println(list2.size());

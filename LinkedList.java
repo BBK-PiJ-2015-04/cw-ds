@@ -58,7 +58,7 @@ public class LinkedList implements List {
 			for(int i = 0; i < (index - 1); i++) {
 				current = current.getNext();
 			}
-			ReturnObjectImpl answer = new ReturnObjectImpl(current.getObject());
+			ReturnObjectImpl answer = new ReturnObjectImpl(current.getNext().getObject());
 			current.setNext(current.getNext().getNext());
 			indx--;
 			return answer;
