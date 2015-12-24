@@ -29,6 +29,19 @@ public class Test2 {
 		
 		System.out.println(list3);
 		
+		list2.add("Another one.");
+		System.out.println(list3);
+		
+		LinkedList temp = new LinkedList();
+		temp = (LinkedList) list3.get(1).getReturnValue();
+		System.out.println(temp.get(4).getReturnValue());
+		
+		temp.add("first one");
+		System.out.println(temp);
+		System.out.println(list2);
+		
+		
+		
 		/*Object[] testarr = new Object[5];
 		int aaa = 5;
 		testarr[0] = aaa;

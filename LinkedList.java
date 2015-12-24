@@ -131,8 +131,9 @@ public class LinkedList implements List {
 	
 	// DELETE THESE TESTING ONES BELOW!!!
 	
-	//@Override
-	public boolean equals(LinkedList list) {
+	@Override
+	public boolean equals(Object obj) {
+		LinkedList list = (LinkedList) obj;
 		if(indx != (list.size() - 1)) {
 			return false;
 		}
@@ -146,7 +147,7 @@ public class LinkedList implements List {
 		return true;
 	}
 	
-	//@Override
+	@Override
 	public String toString() {
 		if(indx == -1) {
 			return null;
