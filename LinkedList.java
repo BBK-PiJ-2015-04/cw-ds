@@ -1,7 +1,7 @@
 public class LinkedList implements List {
 	
 	private LoneRanger firstRanger;
-	private LoneRanger lastRanger;
+	private LoneRanger lastRanger; // this will speed up the stack operations...
 	private int indx;
 	
 	LinkedList() {
@@ -31,6 +31,9 @@ public class LinkedList implements List {
 			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
+		
+		// create new case for last element - shortcut to LastRanger
+		
 		else {
 			LoneRanger current = firstRanger;
 			for(int i = 0; i < index; i++) {
@@ -47,6 +50,10 @@ public class LinkedList implements List {
 			ReturnObjectImpl answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
+		
+		// create new case for last element - shortcut to LastRanger
+		
+		
 		else if(index == 0) {
 			ReturnObjectImpl answer = new ReturnObjectImpl(firstRanger.getObject());
 			firstRanger = firstRanger.getNext();

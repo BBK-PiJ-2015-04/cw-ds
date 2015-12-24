@@ -34,8 +34,9 @@ public class ImprovedStackImpl implements ImprovedStack {
 	@Override
 	public ImprovedStack reverse() {
 		ImprovedStack answer = new ImprovedStackImpl(new LinkedList());
-		answer.push("John");
-		answer.push("David");
+		for(int i = internalList.size() - 1; i >= 0; i--) {
+			answer.push(internalList.get(i).getReturnValue());
+		}
 		return answer;
 	}
 
