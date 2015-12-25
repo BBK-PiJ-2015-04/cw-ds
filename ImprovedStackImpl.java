@@ -33,19 +33,13 @@ public class ImprovedStackImpl implements ImprovedStack {
 
 	@Override
 	public ImprovedStack reverse() {
-		
-		// Can we use instance of to find out?
-		System.out.println(internalList.getClass());
+		ImprovedStack answer;
 		if(internalList instanceof ArrayList) {
-			System.out.println("ArrayList!!!");
-		}
-		else if(internalList instanceof LinkedList) {
-			System.out.println("LinkedList!!!");
+			answer = new ImprovedStackImpl(new ArrayList());
 		}
 		else {
-			System.out.println("Dunno");
+			answer = new ImprovedStackImpl(new LinkedList());
 		}
-		ImprovedStack answer = new ImprovedStackImpl(new LinkedList());
 		for(int i = internalList.size() - 1; i >= 0; i--) {
 			answer.push(internalList.get(i).getReturnValue());
 		}

@@ -4,8 +4,8 @@ public class Test3 {
 
 	public static void main(String[] args) {
 		
-		LinkedList list1 = new LinkedList();
-		LinkedList list2 = new LinkedList();
+		List list1 = new ArrayList();
+		List list2 = new LinkedList();
 		
 		ImprovedStackImpl stack1 = new ImprovedStackImpl(list1);
 		System.out.println(stack1.pop().getReturnValue());

@@ -17,9 +17,15 @@ public class SampleableListImpl2 implements SampleableList {
 	
 	@Override
 	public SampleableList sample() {
-		SampleableList retList = new SampleableListImpl2();
+		SampleableList retList;
+		if(internalList instanceof ArrayList) {
+			retList = new SampleableListImpl2("Array");
+		}
+		else {
+			retList = new SampleableListImpl2();
+		}
 		for(int i = 0; i < size(); i = i + 2) {
-			retList.add(get(i).getReturnValue());		
+				retList.add(get(i).getReturnValue());
 		}
 		return retList;
 	}

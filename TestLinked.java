@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Test {
+public class TestLinked {
 	
 	private FunctionalList[] myLists = new FunctionalLinkedList[10];
 	private int listCounter = 0;
@@ -8,7 +8,7 @@ public class Test {
 	
 	public static void main(String[] args) {
 		
-		Test dummy = new Test();
+		TestLinked dummy = new TestLinked();
 		
 		dummy.Launch();
 	
@@ -22,7 +22,7 @@ public class Test {
 		
 		while(!userChoice.equals("z")) {
 			
-			System.out.println("CURRENT LIST NUMBER: " + (currentList + 1) + "   Choose from the following:\n");
+			System.out.println("CURRENT LIST: " + (currentList + 1) + " OF " + listCounter + " Choose from the following:\n");
 			System.out.println("(a) Create a new list.");
 			System.out.println("(b) Is the list empty?");
 			System.out.println("(c) The size of the list?");
@@ -38,7 +38,6 @@ public class Test {
 			System.out.println("(m) Change the current list.");
 			System.out.println("(n) Get head().");
 			System.out.println("(o) Get rest().");
-			System.out.println("(p) Get sample().");
 			System.out.println("\n(z) Exit the program.\n");
 			System.out.print("Your choice: ");	
 			
@@ -111,17 +110,11 @@ public class Test {
 			}
 			
 			else if(userChoice.equals("n")) {
-				System.out.println(myLists[currentList].head().hasError());
-				System.out.println(myLists[currentList].head().getError());
-				System.out.println(myLists[currentList].head().getReturnValue());
+				System.out.println("\nHead: " + myLists[currentList].head().getReturnValue() + "\n");
 			}
 			
 			else if(userChoice.equals("o")) {
 				getRest();
-			}
-			
-			else if(userChoice.equals("p")) {
-				getSample();
 			}
 			
 			else {
@@ -149,20 +142,6 @@ public class Test {
 		listCounter++;
 		myLists[listCounter - 1] = new FunctionalLinkedList();
 		myLists[listCounter - 1] = myLists[currentList].rest();
-		currentList = listCounter - 1;
-		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
-		
-	}
-	
-	private void getSample() {
-		
-		listCounter++;
-		SampleableList temp1 = new SampleableListImpl();
-		SampleableList temp2 = new SampleableListImpl();
-		temp1 = (SampleableList) myLists[currentList];
-		temp2 = (SampleableList) temp1.sample();
-		myLists[listCounter - 1] = new FunctionalLinkedList();
-		myLists[listCounter - 1] = (FunctionalLinkedList) temp2;
 		currentList = listCounter - 1;
 		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
 		
@@ -216,7 +195,6 @@ public class Test {
 		else {
 			System.out.println("\nStatus: " + myLists[currentList].add(indx, userChoice).getError() + "\n");
 		}
-		
 	}
 	
 	private void addLoadsToListX() {
