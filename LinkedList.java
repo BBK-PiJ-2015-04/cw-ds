@@ -103,6 +103,7 @@ public class LinkedList implements List {
 		}
 		if(firstRanger == null) {
 			firstRanger = new LoneRanger(item);
+			lastRanger = firstRanger;
 			indx++;
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 			return answer;
@@ -117,7 +118,7 @@ public class LinkedList implements List {
 		}
 		LoneRanger temp = new LoneRanger(item);
 		lastRanger.setNext(temp);
-		lastRanger = lastRanger.getNext();
+		lastRanger = temp;
 		indx++;
 		ReturnObject answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 		return answer;	
