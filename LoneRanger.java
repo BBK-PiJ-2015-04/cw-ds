@@ -1,17 +1,17 @@
 public class LoneRanger {
 	
-	private Object obj;
+	private Object item;
 	private LoneRanger next;
 	private LoneRanger previous;
 	
-	public LoneRanger(Object obj) {
-		this.obj = obj;
+	public LoneRanger(Object item) {
+		this.item = item;
 		next = null;
 		previous = null;
 	}
 	
-	public void setObject(Object obj) {
-		this.obj = obj;
+	public void setObject(Object item) {
+		this.item = item;
 	}
 	
 	public void setNext(LoneRanger next) {
@@ -23,7 +23,7 @@ public class LoneRanger {
 	}
 	
 	public Object getObject() {
-		return obj;
+		return item;
 	}
 	
 	public LoneRanger getNext() {

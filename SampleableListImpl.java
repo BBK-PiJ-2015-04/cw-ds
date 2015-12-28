@@ -4,7 +4,7 @@ public class SampleableListImpl implements SampleableList {
 	
 	public SampleableListImpl() {
 		internalList = new LinkedList();
-    }
+	}
 	
 	public SampleableListImpl(String str) {
 		if(str.equals("Array") || str.equals("array")) {

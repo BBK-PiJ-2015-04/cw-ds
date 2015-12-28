@@ -1,11 +1,11 @@
 public class FunctionalArrayList extends ArrayList implements FunctionalList {
-    
+
 	@Override
 	public ReturnObject head() {
 		return get(0);
 	}
 
-    @Override
+	@Override
 	public FunctionalList rest() {
 		FunctionalList retList = new FunctionalArrayList();
 		for(int i = 1; i < size(); i++) {

@@ -3,8 +3,8 @@ public class ImprovedStackImpl implements ImprovedStack {
 	private List internalList;
 	
 	public ImprovedStackImpl(List list) {
-	  internalList = list;
-    }
+		internalList = list;
+	}
 	
 	@Override
 	public boolean isEmpty() {

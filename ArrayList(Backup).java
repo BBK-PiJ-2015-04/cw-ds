@@ -1,18 +1,18 @@
 public class ArrayList implements List {
 	
+	private int arraySize;
 	private Object[] arrList;
-	private int index = -1;
-	private int arrSize;
+	private int indx = -1;
 	
 	public ArrayList() {
-		arrList = new Object[arrSize];
-		index = -1;
-		arrSize = 2;
+		arraySize = 2;
+		indx = -1;
+		arrList = new Object[arraySize];
 	}
 	
 	@Override
 	public boolean isEmpty() {
-		if(index == -1) {
+		if(indx == -1) {
 			return true;
 		}
 		else {
@@ -22,12 +22,12 @@ public class ArrayList implements List {
 
 	@Override
 	public int size() {
-		return index + 1;
+		return indx + 1;
 	}
 
 	@Override
 	public ReturnObject get(int index) {
-		if(index < 0 || index > this.index) {
+		if(index < 0 || index > indx) {
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
@@ -37,21 +37,21 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject remove(int index) {
-		if(index < 0 || index > this.index) {
+		if(index < 0 || index > indx) {
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
 		ReturnObject answer = new ReturnObjectImpl(arrList[index]);
-		Object[] temp = new Object[arrSize];
+		Object[] temp = new Object[arraySize];
 		for(int i = 0; i < index; i++) {
 			temp[i] = arrList[i];
 		}
-		for(int i = index; i < this.index; i++) {
+		for(int i = index; i < indx; i++) {
 			temp[i] = arrList[i + 1];
 		}
 		arrList = temp;
-		this.index--;
-		if((this.index + 1) <= (arrList.length / 3)) { // We shrink the arry when one-third the size.
+		indx--;
+		if((indx + 1) <= (arrList.length / 3)) { // We shrink the arry when one-third the size.
 			HalveIt();
 		}
 		return answer;
@@ -59,7 +59,7 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject add(int index, Object item) {
-		if(index < 0 || index > this.index) {
+		if(index < 0 || index > indx) {
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
@@ -67,16 +67,16 @@ public class ArrayList implements List {
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 			return answer;
 		}
-		if((this.index + 2) > arrList.length) {
+		if((indx + 2) > arrList.length) {
 			DoubleIt();
 		}
-		this.index++;
-		Object[] temp = new Object[arrSize];
+		indx++;
+		Object[] temp = new Object[arraySize];
 		for(int i = 0; i < index; i++) {
 			temp[i] = arrList[i];
 		}
 		temp[index] = item;
-		for(int i = (index + 1); i <= this.index; i++) {
+		for(int i = (index + 1); i <= indx; i++) {
 			temp[i] = arrList[i - 1]; 
 		}
 		arrList = temp;
@@ -90,31 +90,31 @@ public class ArrayList implements List {
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 			return answer;
 		}
-		if((index + 2) > arrList.length) {
+		if((indx + 2) > arrList.length) {
 			DoubleIt();
 		}
-		index++;
-		arrList[index] = item;
+		indx++;
+		arrList[indx] = item;
 		ReturnObject answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 		return answer;
 	}
 	
 	private void DoubleIt() {
-		Object[] temp = new Object[arrSize * 2];
-		for(int i = 0; i <= index; i++) {
+		Object[] temp = new Object[arraySize * 2];
+		for(int i = 0; i <= indx; i++) {
 			temp[i] = arrList[i];
 		}
 		arrList = temp;
-		arrSize = arrSize * 2;
+		arraySize = arraySize * 2;
 	}
 	
 	private void HalveIt() {
-		Object[] temp = new Object[arrSize / 2];
-		for(int i = 0; i <= index; i++) {
+		Object[] temp = new Object[arraySize / 2];
+		for(int i = 0; i <= indx; i++) {
 			temp[i] = arrList[i];
 		}
 		arrList = temp;
-		arrSize = arrSize / 2;
+		arraySize = arraySize / 2;
 	}
 	
 	// DELETE THESE TESTING ONES BELOW!!!
@@ -122,10 +122,10 @@ public class ArrayList implements List {
 	@Override
 	public boolean equals(Object obj) {
 		ArrayList list = (ArrayList) obj;
-		if(index != (list.size() - 1)) {
+		if(indx != (list.size() - 1)) {
 			return false;
 		}
-		for(int i = 0; i <= index; i++) {
+		for(int i = 0; i <= indx; i++) {
 			if(!arrList[i].equals(list.get(i).getReturnValue())) {
 				return false;
 			}
@@ -135,12 +135,12 @@ public class ArrayList implements List {
 	
 	@Override
 	public String toString() {
-		if(index == -1) {
+		if(indx == -1) {
 			return null;
 		}
 		String str = "(";
-		for(int i = 0; i <= index; i++) {
-			if(i == index) {
+		for(int i = 0; i <= indx; i++) {
+			if(i == indx) {
 				str = str + arrList[i] + ")";
 			}
 			else {

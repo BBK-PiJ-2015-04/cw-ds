@@ -1,15 +1,15 @@
 public class ReturnObjectImpl implements ReturnObject {
 	
-	private Object obj;
+	private Object item;
 	private ErrorMessage errorMessage;
 	
 	public ReturnObjectImpl(ErrorMessage errorMessage) {
-		this.obj = null;
+		this.item = null;
 		this.errorMessage = errorMessage;
 	}
 	
-	public ReturnObjectImpl(Object obj) {
-		this.obj = obj;
+	public ReturnObjectImpl(Object item) {
+		this.item = item;
 		this.errorMessage = ErrorMessage.NO_ERROR;
 	}
 	
@@ -30,7 +30,7 @@ public class ReturnObjectImpl implements ReturnObject {
 
 	@Override
 	public Object getReturnValue() {
-		return obj;
+		return item;
 	}
 
 }
