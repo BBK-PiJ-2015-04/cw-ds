@@ -7,6 +7,7 @@ public class LoneRanger {
 	public LoneRanger(Object obj) {
 		this.obj = obj;
 		next = null;
+		previous = null;
 	}
 	
 	public void setObject(Object obj) {

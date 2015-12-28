@@ -32,7 +32,6 @@ public class LinkedList implements List {
 			return answer;
 		}
 		if(((double) index / counter) < 0.5) {
-			System.out.println((double) index / counter + " START");
 			LoneRanger current = firstRanger;
 				for(int i = 0; i < index; i++) {
 				current = current.getNext();
@@ -41,7 +40,6 @@ public class LinkedList implements List {
 			return answer;
 		}
 		else {
-			System.out.println((double) index / counter + " BEGINING");
 			LoneRanger current = lastRanger;
 				for(int i = 0; i < (counter - index); i++) {
 				current = current.getPrevious();
@@ -49,28 +47,6 @@ public class LinkedList implements List {
 			ReturnObject answer = new ReturnObjectImpl(current.getObject());
 			return answer;
 		}
-		
-		/*
-		if(index == counter) {
-			ReturnObject answer = new ReturnObjectImpl(lastRanger.getObject());
-			return answer;
-		}
-		LoneRanger current = firstRanger;
-		for(int i = 0; i < index; i++) {
-			current = current.getNext();
-		}
-		ReturnObject answer = new ReturnObjectImpl(current.getObject());
-		return answer;
-		
-		LoneRanger current = lastRanger;
-		for(int i = 0; i < (counter - index); i++) {
-			current = current.getPrevious();
-		}
-		ReturnObject answer = new ReturnObjectImpl(current.getObject());
-		return answer;
-		
-		*/
-		
 	}
 
 	@Override
@@ -96,7 +72,6 @@ public class LinkedList implements List {
 			return answer;
 		}
 		if(((double) index / counter) < 0.5) {
-			System.out.println((double) index / counter + " START");
 			LoneRanger current = firstRanger;
 				for(int i = 0; i < (index - 1); i++) {
 				current = current.getNext();
@@ -108,7 +83,6 @@ public class LinkedList implements List {
 			return answer;
 			}
 		else {
-			System.out.println((double) index / counter + " BEGINING");
 			LoneRanger current = lastRanger;
 				for(int i = 0; i < (counter - index - 1); i++) {
 				current = current.getPrevious();
@@ -119,18 +93,6 @@ public class LinkedList implements List {
 			counter--;
 			return answer;
 		}
-		
-		/*
-		LoneRanger current = firstRanger;
-		for(int i = 0; i < (index - 1); i++) {
-			current = current.getNext();
-		}
-		ReturnObject answer = new ReturnObjectImpl(current.getNext().getObject());
-		current.setNext(current.getNext().getNext());
-		current.getNext().setPrevious(current);
-		counter--;
-		return answer;
-		*/
 	}
 
 	@Override

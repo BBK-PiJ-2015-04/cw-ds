@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class TestStack {
 	
-	private Stack[] myLists = new StackImpl[10];
+	private ImprovedStack[] myLists = new ImprovedStackImpl[10];
 	private int listCounter = 0;
 	private int currentList = -1;
 	
@@ -32,6 +32,8 @@ public class TestStack {
 			System.out.println("(g) Remove objects from the list.");
 			System.out.println("(h) Remove loads of objects from the list.");
 			System.out.println("(k) Change the current list.");
+			System.out.println("(l) Remove OBJECTS!");
+			System.out.println("(m) REVERSE!");
 			System.out.println("\n(z) Exit the program.\n");
 			System.out.print("Your choice: ");	
 			
@@ -80,6 +82,14 @@ public class TestStack {
 				removeLoadsFromList();
 			}
 			
+			else if(userChoice.equals("l")) {
+				removeBulk();
+			}
+			
+			else if(userChoice.equals("m")) {
+				reverseTime();
+			}
+			
 			else if(userChoice.equals("k")) {
 				System.out.print("Enter the desired list number: ");
 				userChoice = scanny.nextLine();
@@ -106,24 +116,37 @@ public class TestStack {
 		listCounter++;
 		currentList = listCounter - 1;
 		if(userChoice.equals("Array")) {
-			myLists[listCounter - 1] = new StackImpl(new ArrayList());
+			myLists[listCounter - 1] = new ImprovedStackImpl(new ArrayList());
 		}
 		else {
-			myLists[listCounter - 1] = new StackImpl(new LinkedList());
+			myLists[listCounter - 1] = new ImprovedStackImpl(new LinkedList());
 		}
 		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
 		
 	}
 	
-	/*private void getSample() {
+	private void reverseTime() {
 		
 		listCounter++;
-		myLists[listCounter - 1] = new SampleableListImpl2();
-		myLists[listCounter - 1] = myLists[currentList].sample();
+		myLists[listCounter - 1] = new ImprovedStackImpl(new ArrayList()); // Makes no difference as overwritten below
+		myLists[listCounter - 1] = myLists[currentList].reverse();
 		currentList = listCounter - 1;
 		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
 		
-	}*/
+	}
+	
+	private void removeBulk() {
+		
+		System.out.print("\nWhich object to remove? : ");
+		Scanner scanny = new Scanner(System.in);
+		String userChoice = scanny.nextLine();
+		long timey = System.currentTimeMillis();
+		myLists[currentList].remove(userChoice);
+		timey = System.currentTimeMillis() - timey;
+		System.out.println("removed in " + (double) timey / 1000 + " seconds.");
+		System.out.println();
+	
+	}
 	
 	private void addToList() {
 	

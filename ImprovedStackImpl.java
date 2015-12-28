@@ -33,17 +33,17 @@ public class ImprovedStackImpl implements ImprovedStack {
 
 	@Override
 	public ImprovedStack reverse() {
-		ImprovedStack answer;
+		ImprovedStack retList;
 		if(internalList instanceof ArrayList) {
-			answer = new ImprovedStackImpl(new ArrayList());
+			retList = new ImprovedStackImpl(new ArrayList());
 		}
 		else {
-			answer = new ImprovedStackImpl(new LinkedList());
+			retList = new ImprovedStackImpl(new LinkedList());
 		}
 		for(int i = internalList.size() - 1; i >= 0; i--) {
-			answer.push(internalList.get(i).getReturnValue());
+			retList.push(internalList.get(i).getReturnValue());
 		}
-		return answer;
+		return retList;
 	}
 
 	@Override

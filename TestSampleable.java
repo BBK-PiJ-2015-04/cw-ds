@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class TestSampleable {
 	
-	private SampleableList[] myLists = new SampleableListImpl2[10];
+	private SampleableList[] myLists = new SampleableListImpl[10];
 	private int listCounter = 0;
 	private int currentList = -1;
 	
@@ -131,10 +131,10 @@ public class TestSampleable {
 		listCounter++;
 		currentList = listCounter - 1;
 		if(userChoice.equals("Array")) {
-			myLists[listCounter - 1] = new SampleableListImpl2("Array");
+			myLists[listCounter - 1] = new SampleableListImpl("Array");
 		}
 		else {
-			myLists[listCounter - 1] = new SampleableListImpl2();
+			myLists[listCounter - 1] = new SampleableListImpl();
 		}
 		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
 		
@@ -143,7 +143,7 @@ public class TestSampleable {
 	private void getSample() {
 		
 		listCounter++;
-		myLists[listCounter - 1] = new SampleableListImpl2();
+		myLists[listCounter - 1] = new SampleableListImpl();
 		myLists[listCounter - 1] = myLists[currentList].sample();
 		currentList = listCounter - 1;
 		System.out.println("\nNew list created. It is list number " + listCounter + ".\n");
