@@ -1,13 +1,24 @@
+/**
+ * An implementation of the interface List using a linked list as the
+ * unerlying data structure.
+ *
+ * @author Birkbeck
+ */ 
+
 public class LinkedList implements List {
 	
-	private LoneRanger firstRanger;
-	private LoneRanger lastRanger;
-	private int index;
+	private LoneRanger firstRanger; // pointer to the first node
+	private LoneRanger lastRanger; // pointer to the last node
+	private int index; // internal counter
+	
+	/**
+	 * Creates a list based on a linked list.
+	 */
 	
 	public LinkedList() {
 		firstRanger = null;
 		lastRanger = null;
-		index = -1;
+		index = -1; // index of -1 means 0 elements in the list (empty)
 	}
 	
 	@Override
@@ -22,7 +33,7 @@ public class LinkedList implements List {
 
 	@Override
 	public int size() {
-		return index + 1;
+		return index + 1; // since the first element is at index 0, size is 1 more
 	}
 
 	@Override
@@ -31,8 +42,8 @@ public class LinkedList implements List {
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
-		if(((double) index / this.index) < 0.5) {
-			LoneRanger current = firstRanger;
+		if(((double) index / this.index) < 0.5) { // closer to the begining or end of the list?
+			LoneRanger current = firstRanger; // start from the begining
 				for(int i = 0; i < index; i++) {
 				current = current.getNext();
 			}
@@ -40,7 +51,7 @@ public class LinkedList implements List {
 			return answer;
 		}
 		else {
-			LoneRanger current = lastRanger;
+			LoneRanger current = lastRanger; // start from the end
 				for(int i = 0; i < (this.index - index); i++) {
 				current = current.getPrevious();
 			}
@@ -55,7 +66,7 @@ public class LinkedList implements List {
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
-		if(index == 0) {
+		if(index == 0) { // is it the first element?
 			ReturnObject answer = new ReturnObjectImpl(firstRanger.getObject());
 			firstRanger = firstRanger.getNext();
 			if(firstRanger != null) {
@@ -64,15 +75,15 @@ public class LinkedList implements List {
 			this.index--;
 			return answer;
 		}
-		if(index == this.index) {
+		if(index == this.index) { // is it the last element?
 			ReturnObject answer = new ReturnObjectImpl(lastRanger.getObject());
 			lastRanger = lastRanger.getPrevious();
 			lastRanger.setNext(null);
 			this.index--;
 			return answer;
 		}
-		if(((double) index / this.index) < 0.5) {
-			LoneRanger current = firstRanger;
+		if(((double) index / this.index) < 0.5) { // closer to the begining or end of the list?
+			LoneRanger current = firstRanger; // start from the begining
 				for(int i = 0; i < (index - 1); i++) {
 				current = current.getNext();
 			}
@@ -83,7 +94,7 @@ public class LinkedList implements List {
 			return answer;
 			}
 		else {
-			LoneRanger current = lastRanger;
+			LoneRanger current = lastRanger; // start from the end
 				for(int i = 0; i < (this.index - index - 1); i++) {
 				current = current.getPrevious();
 			}
@@ -105,7 +116,7 @@ public class LinkedList implements List {
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
-		if(index == 0) {
+		if(index == 0) { // is it at the start of the list?
 			LoneRanger temp = new LoneRanger(item);
 			temp.setNext(firstRanger);
 			firstRanger.setPrevious(temp);
@@ -134,14 +145,14 @@ public class LinkedList implements List {
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 			return answer;
 		}
-		if(firstRanger == null) {
+		if(firstRanger == null) { // is the list empty?
 			firstRanger = new LoneRanger(item);
 			lastRanger = firstRanger;
 			index++;
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 			return answer;
 		}
-		if(firstRanger.getNext() == null) {
+		if(firstRanger.getNext() == null) { // does the list have only one element?
 			LoneRanger temp = new LoneRanger(item);
 			firstRanger.setNext(temp);
 			lastRanger = temp;
@@ -157,43 +168,6 @@ public class LinkedList implements List {
 		index++;
 		ReturnObject answer = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 		return answer;	
-	}
-	
-	// DELETE THESE TESTING ONES BELOW!!!
-	
-	@Override
-	public boolean equals(Object obj) {
-		LinkedList list = (LinkedList) obj;
-		if(index != (list.size() - 1)) {
-			return false;
-		}
-		LoneRanger current = firstRanger;
-		for(int i = 0; i <= index; i++) {
-			if(!current.getObject().equals(list.get(i).getReturnValue())) {
-				return false;
-			}
-			current = current.getNext();
-		}
-		return true;
-	}
-	
-	@Override
-	public String toString() {
-		if(index == -1) {
-			return null;
-		}
-		String str = "(";
-		LoneRanger current = firstRanger;
-		for(int i = 0; i <= index; i++) {
-			if(i == index) {
-				str = str + current.getObject() + ")";
-			}
-			else {
-				str = str + current.getObject() + ", ";
-				current = current.getNext();
-			}
-		}
-		return str;
 	}
 	
 }

@@ -1,13 +1,24 @@
+/**
+ * An implementation of the interface List using arrays as the unerlying data
+ * structures.
+ *
+ * @author Birkbeck
+ */ 
+
 public class ArrayList implements List {
 	
 	private Object[] arrList;
-	private int index = -1;
+	private int index; // internal counter
 	private int arrSize;
+	
+	/**
+	 * Creates a list based on a array list.
+	 */	
 	
 	public ArrayList() {
 		arrList = new Object[arrSize];
-		index = -1;
-		arrSize = 2;
+		index = -1; // index of -1 means 0 elements in the list (empty)
+		arrSize = 2; // we start the array with a size of 2 and then keep doubling
 	}
 	
 	@Override
@@ -22,7 +33,7 @@ public class ArrayList implements List {
 
 	@Override
 	public int size() {
-		return index + 1;
+		return index + 1; // since the first element is at index 0, size is 1 more
 	}
 
 	@Override
@@ -51,7 +62,7 @@ public class ArrayList implements List {
 		}
 		arrList = temp;
 		this.index--;
-		if((this.index + 1) <= (arrList.length / 3)) { // We shrink the arry when one-third the size.
+		if((this.index + 1) <= (arrList.length / 3)) { // We shrink the array when one-third the size
 			HalveIt();
 		}
 		return answer;
@@ -67,7 +78,7 @@ public class ArrayList implements List {
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 			return answer;
 		}
-		if((this.index + 2) > arrList.length) {
+		if((this.index + 2) > arrList.length) { // If the array is full we double it
 			DoubleIt();
 		}
 		this.index++;
@@ -90,7 +101,7 @@ public class ArrayList implements List {
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 			return answer;
 		}
-		if((index + 2) > arrList.length) {
+		if((index + 2) > arrList.length) { // Check if array is full and if so double it
 			DoubleIt();
 		}
 		index++;
@@ -99,55 +110,22 @@ public class ArrayList implements List {
 		return answer;
 	}
 	
-	private void DoubleIt() {
+	private void DoubleIt() { // Here is where we double the array in size
 		Object[] temp = new Object[arrSize * 2];
 		for(int i = 0; i <= index; i++) {
 			temp[i] = arrList[i];
 		}
 		arrList = temp;
-		arrSize = arrSize * 2;
+		arrSize = arrSize * 2; // New array size is double
 	}
 	
-	private void HalveIt() {
+	private void HalveIt() { // Here is where we halve the array in size
 		Object[] temp = new Object[arrSize / 2];
 		for(int i = 0; i <= index; i++) {
 			temp[i] = arrList[i];
 		}
 		arrList = temp;
-		arrSize = arrSize / 2;
-	}
-	
-	// DELETE THESE TESTING ONES BELOW!!!
-	
-	@Override
-	public boolean equals(Object obj) {
-		ArrayList list = (ArrayList) obj;
-		if(index != (list.size() - 1)) {
-			return false;
-		}
-		for(int i = 0; i <= index; i++) {
-			if(!arrList[i].equals(list.get(i).getReturnValue())) {
-				return false;
-			}
-		}
-		return true;
-	}
-	
-	@Override
-	public String toString() {
-		if(index == -1) {
-			return null;
-		}
-		String str = "(";
-		for(int i = 0; i <= index; i++) {
-			if(i == index) {
-				str = str + arrList[i] + ")";
-			}
-			else {
-				str = str + arrList[i] + ", ";
-			}
-		}
-		return str;
+		arrSize = arrSize / 2; // New array size is half
 	}
 	
 }
