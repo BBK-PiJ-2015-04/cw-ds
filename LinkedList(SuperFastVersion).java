@@ -139,7 +139,7 @@ public class LinkedList implements List {
 			LoneRanger indexRanger = new LoneRanger(null);
 			indexRanger = newOne;
 			indexList.add(indexRanger);
-			indexRanger = (LoneRanger) indexList.get(indexList.size() - 1).getReturnValue();
+			//indexRanger = (LoneRanger) indexList.get(indexList.size() - 1).getReturnValue();
 		}
 		index++;
 	}
