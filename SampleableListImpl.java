@@ -1,8 +1,8 @@
 /**
  * An implementation of the interface SampleableList. This implementation
  * will work with both LinkedList and ArrayList. Since linked lists are more
- * efficient, that is chosen as the defualt underlying data structure. However,
- * if arrays are prefered, an optional constructor is provided. Consider this
+ * efficient, that is chosen as the default underlying data structure. However,
+ * if arrays are preferred, an optional constructor is provided. Consider this
  * a bonus feature if you will.
  *
  * @author Birkbeck
@@ -44,7 +44,7 @@ public class SampleableListImpl implements SampleableList {
 		// Below we check to see if the list was based on ArrayList or
 		// LinkedList and we return a new list of the same type. While we can
 		// choose ourselves and we would probably choose LinkedList for
-		// efficency, we feel it is better to keep the new list of the same
+		// efficiency, we feel it is better to keep the new list of the same
 		// structure as the original list.
 		if(internalList instanceof ArrayList) {
 			retList = new SampleableListImpl("Array");

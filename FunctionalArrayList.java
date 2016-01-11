@@ -7,7 +7,7 @@
 
 public class FunctionalArrayList extends ArrayList implements FunctionalList {
 
-	// No need for a constructor as the default constructor () is inherted
+	// No need for a constructor as the default constructor () is inherited
 	
 	@Override
 	public ReturnObject head() {

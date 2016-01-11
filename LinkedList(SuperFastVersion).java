@@ -1,6 +1,6 @@
 /**
  * An implementation of the interface List using a linked list as the
- * unerlying data structure.
+ * underlying data structure.
  *
  * @author Birkbeck
  */ 
@@ -139,7 +139,6 @@ public class LinkedList implements List {
 			LoneRanger indexRanger = new LoneRanger(null);
 			indexRanger = newOne;
 			indexList.add(indexRanger);
-			//indexRanger = (LoneRanger) indexList.get(indexList.size() - 1).getReturnValue();
 		}
 		index++;
 	}

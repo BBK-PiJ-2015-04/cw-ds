@@ -1,6 +1,6 @@
 /**
  * An implementation of the interface List using a linked list as the
- * unerlying data structure.
+ * underlying data structure.
  *
  * @author Birkbeck
  */ 
@@ -42,8 +42,8 @@ public class LinkedList implements List {
 			ReturnObject answer = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return answer;
 		}
-		if(((double) index / this.index) < 0.5) { // closer to the begining or end of the list?
-			LoneRanger current = firstRanger; // start from the begining
+		if(((double) index / this.index) < 0.5) { // closer to the beginning or end of the list?
+			LoneRanger current = firstRanger; // start from the beginning
 				for(int i = 0; i < index; i++) {
 				current = current.getNext();
 			}
@@ -82,8 +82,8 @@ public class LinkedList implements List {
 			this.index--;
 			return answer;
 		}
-		if(((double) index / this.index) < 0.5) { // closer to the begining or end of the list?
-			LoneRanger current = firstRanger; // start from the begining
+		if(((double) index / this.index) < 0.5) { // closer to the beginning or end of the list?
+			LoneRanger current = firstRanger; // start from the beginning
 				for(int i = 0; i < (index - 1); i++) {
 				current = current.getNext();
 			}
